@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileCollectionsOpen, setIsMobileCollectionsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,7 +34,7 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
       <div className="container-fluid" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%' }}>
         
         {/* Brand Logo & Name */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', cursor: 'pointer' }} onClick={() => onSelectCategory(null)}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', cursor: 'pointer' }} onClick={() => { onSelectCategory(null); setIsMobileMenuOpen(false); }}>
           <img 
             src="/R.png" 
             alt="Miraya by Garima Logo" 
@@ -55,7 +57,7 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
         </div>
 
         {/* Navigation Links */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
+        <div className="desktop-nav-links" style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
           
           {/* Collection Dropdown */}
           <div 
@@ -179,37 +181,121 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
           </span>
         </div>
 
-        {/* Shopping Bag */}
-        <div 
-          onClick={onCartClick} 
-          style={{ 
-            display: 'flex', 
-            alignItems: 'center', 
-            gap: '8px', 
-            cursor: 'pointer', 
-            padding: '6px 12px',
-            border: '1px solid var(--gold-border)',
-            transition: 'var(--transition-smooth)'
-          }}
-          onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--accent-burgundy)'}
-          onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--gold-border)'}
-        >
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-burgundy)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
-            <line x1="3" y1="6" x2="21" y2="6"></line>
-            <path d="M16 10a4 4 0 0 1-8 0"></path>
-          </svg>
-          <span style={{ 
-            fontFamily: 'var(--font-body)', 
-            fontSize: '12px', 
-            letterSpacing: '0.1em', 
-            fontWeight: '600',
-            textTransform: 'uppercase'
-          }}>
-            Bag ({cartCount})
-          </span>
+        {/* Shopping Bag & Hamburger */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+          
+          <div 
+            onClick={onCartClick} 
+            style={{ 
+              display: 'flex', 
+              alignItems: 'center', 
+              gap: '8px', 
+              cursor: 'pointer', 
+              padding: '6px 12px',
+              border: '1px solid var(--gold-border)',
+              transition: 'var(--transition-smooth)'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--accent-burgundy)'}
+            onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--gold-border)'}
+          >
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-burgundy)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+              <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <path d="M16 10a4 4 0 0 1-8 0"></path>
+            </svg>
+            <span style={{ 
+              fontFamily: 'var(--font-body)', 
+              fontSize: '12px', 
+              letterSpacing: '0.1em', 
+              fontWeight: '600',
+              textTransform: 'uppercase'
+            }}>
+              Bag ({cartCount})
+            </span>
+          </div>
+
+          <button 
+            className="mobile-nav-toggle"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            ) : (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <line x1="3" y1="12" x2="21" y2="12"></line>
+                <line x1="3" y1="6" x2="21" y2="6"></line>
+                <line x1="3" y1="18" x2="21" y2="18"></line>
+              </svg>
+            )}
+          </button>
+
         </div>
 
+      </div>
+
+      {/* Mobile Menu Drawer Overlay */}
+      <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
+        <button 
+          className="mobile-menu-link" 
+          onClick={() => setIsMobileCollectionsOpen(!isMobileCollectionsOpen)}
+        >
+          <span>Collections</span>
+          <span style={{ fontSize: '10px' }}>{isMobileCollectionsOpen ? '▲' : '▼'}</span>
+        </button>
+        
+        <div className={`mobile-submenu ${isMobileCollectionsOpen ? 'open' : ''}`}>
+          <button 
+            className="mobile-submenu-btn"
+            onClick={() => {
+              onSelectCategory(null);
+              setIsMobileMenuOpen(false);
+              const grid = document.getElementById('masterpieces');
+              if (grid) grid.scrollIntoView({ behavior: 'smooth' });
+            }}
+          >
+            All Masterpieces
+          </button>
+          {collections.map((col) => (
+            <button 
+              key={col.value}
+              className="mobile-submenu-btn"
+              onClick={() => {
+                onSelectCategory(col.value);
+                setIsMobileMenuOpen(false);
+                const grid = document.getElementById('masterpieces');
+                if (grid) grid.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
+              {col.name}
+            </button>
+          ))}
+        </div>
+
+        <button 
+          className="mobile-menu-link"
+          onClick={() => {
+            setIsMobileMenuOpen(false);
+            const el = document.getElementById('brand-pillars');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}
+        >
+          Pillars
+        </button>
+
+        <button 
+          className="mobile-menu-link"
+          onClick={() => {
+            setIsMobileMenuOpen(false);
+            const el = document.getElementById('footer-brand');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}
+        >
+          Inquire
+        </button>
       </div>
     </nav>
   );

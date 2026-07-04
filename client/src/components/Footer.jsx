@@ -37,7 +37,7 @@ export default function Footer() {
   };
 
   return (
-    <footer id="footer-brand" style={{ 
+    <footer id="footer-brand" className="brand-footer" style={{ 
       backgroundColor: 'var(--accent-burgundy)', 
       color: 'var(--bg-warm-ivory)',
       padding: '80px 40px 40px 40px',

@@ -16,7 +16,7 @@ export default function Collection({ products, activeCategory, onSelectCategory,
   return (
     <section id="masterpieces" className="border-grid-bottom" style={{ backgroundColor: 'var(--bg-white)' }}>
       {/* Category Navigation Bar */}
-      <div className="border-grid-bottom" style={{ 
+      <div className="border-grid-bottom category-scroll-container" style={{ 
         padding: '30px 40px',
         display: 'flex', 
         justifyContent: 'center', 

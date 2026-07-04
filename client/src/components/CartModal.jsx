@@ -47,7 +47,7 @@ export default function CartModal({ isOpen, onClose, cartItems, onUpdateQuantity
         onClick={(e) => e.stopPropagation()}
       >
         {/* Drawer Header */}
-        <div style={{ 
+        <div className="cart-drawer-header" style={{ 
           padding: '24px', 
           backgroundColor: 'var(--accent-burgundy)', 
           color: 'var(--bg-warm-ivory)',
@@ -114,7 +114,7 @@ export default function CartModal({ isOpen, onClose, cartItems, onUpdateQuantity
           /* Normal Cart Items & Checkout Form */
           <>
             {/* Cart Items List */}
-            <div style={{ flexGrow: 1, overflowY: 'auto', padding: '24px' }}>
+            <div className="cart-drawer-body" style={{ flexGrow: 1, overflowY: 'auto', padding: '24px' }}>
               {cartItems.length === 0 ? (
                 <div style={{ height: '100%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center' }}>
                   <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-muted)', fontSize: '14px', letterSpacing: '0.05em' }}>
@@ -194,7 +194,7 @@ export default function CartModal({ isOpen, onClose, cartItems, onUpdateQuantity
 
             {/* Cart Footer & Checkout Form */}
             {cartItems.length > 0 && (
-              <div style={{ 
+              <div className="cart-drawer-footer" style={{ 
                 padding: '24px', 
                 borderTop: '1px solid var(--gold-border)', 
                 backgroundColor: 'rgba(198, 164, 106, 0.05)',

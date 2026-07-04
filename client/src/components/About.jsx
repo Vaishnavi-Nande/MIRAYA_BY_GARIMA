@@ -4,9 +4,9 @@ export default function About() {
   return (
     <section className="border-grid-bottom" style={{ backgroundColor: 'var(--bg-warm-ivory)' }}>
       {/* 2-Column Intro Section */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', width: '100%' }}>
+      <div className="about-row" style={{ display: 'flex', flexWrap: 'wrap', width: '100%' }}>
         {/* Left Column: Title */}
-        <div style={{ 
+        <div className="about-col-left" style={{ 
           flex: '1 1 40%', 
           padding: '80px 60px', 
           borderRight: '1px solid var(--gold-border)',
@@ -27,7 +27,7 @@ export default function About() {
         </div>
 
         {/* Right Column: Narrative */}
-        <div style={{ 
+        <div className="about-col-right" style={{ 
           flex: '1 1 60%', 
           padding: '80px 60px', 
           display: 'flex', 
@@ -48,9 +48,9 @@ export default function About() {
       </div>
 
       {/* Inner panel with macro textile embroidery detail shot */}
-      <div className="border-grid-top" style={{ padding: '40px' }}>
+      <div className="border-grid-top about-textile-container" style={{ padding: '40px' }}>
         <div 
-          className="editorial-image-container" 
+          className="editorial-image-container about-textile-frame" 
           style={{ 
             height: '450px', 
             border: '1px solid var(--gold-border)', 

@@ -41,7 +41,7 @@ export default function ProductDetailModal({ product, isOpen, onClose, onAddToBa
         </button>
 
         {/* Left Side: Product Image */}
-        <div style={{ flex: '1 1 450px', height: '600px', overflow: 'hidden', borderRight: '1px solid var(--gold-border)' }}>
+        <div className="modal-image-container" style={{ flex: '1 1 450px', height: '600px', overflow: 'hidden', borderRight: '1px solid var(--gold-border)' }}>
           <img 
             src={product.image} 
             alt={product.name} 
@@ -53,7 +53,7 @@ export default function ProductDetailModal({ product, isOpen, onClose, onAddToBa
         </div>
 
         {/* Right Side: Product Details */}
-        <div style={{ flex: '1 1 400px', padding: '48px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+        <div className="modal-details-container" style={{ flex: '1 1 400px', padding: '48px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
           <div>
             <span style={{ 
               fontFamily: 'var(--font-body)', 

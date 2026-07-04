@@ -35,7 +35,7 @@ export default function Hero({ onExploreClick }) {
         
         {/* Main Headline Stacked */}
         <h1 style={{ margin: 0, padding: 0 }}>
-          <span style={{ 
+          <span className="hero-title-art" style={{ 
             fontFamily: 'var(--font-heading)', 
             fontStyle: 'italic',
             fontSize: 'clamp(32px, 4.5vw, 48px)', // text-4xl md:text-5xl
@@ -47,7 +47,7 @@ export default function Hero({ onExploreClick }) {
           }}>
             The Art of
           </span>
-          <span style={{ 
+          <span className="hero-title-elegance" style={{ 
             fontFamily: 'var(--font-heading)',
             fontSize: 'clamp(44px, 6.5vw, 80px)', // bold capitalized base size
             fontWeight: '700', // bold

@@ -41,7 +41,7 @@ export default function Pillars() {
       </div>
 
       {/* 3-column Grid */}
-      <div style={{ display: 'flex', flexWrap: 'wrap', width: '100%' }}>
+      <div className="pillars-row" style={{ display: 'flex', flexWrap: 'wrap', width: '100%' }}>
         {pillars.map((p, idx) => (
           <div 
             key={p.title} 
