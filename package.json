@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Miraya by Garima - Premium E-Commerce Monorepo Workspace",
   "scripts": {
-    "install:all": "npm install && npm install --prefix backend && npm install --prefix client",
-    "backend": "npm start --prefix backend",
+    "install:all": "npm install && npm install --prefix server && npm install --prefix client",
+    "backend": "npm start --prefix server",
     "client": "npm run dev --prefix client",
     "dev": "concurrently \"npm run backend\" \"npm run client\"",
     "build": "npm install --prefix client && npm run build --prefix client"
