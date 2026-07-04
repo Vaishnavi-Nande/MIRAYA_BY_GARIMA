@@ -28,8 +28,8 @@ export default function App() {
     const fetchProducts = async () => {
       try {
         const url = activeCategory 
-          ? `http://localhost:5000/api/products?category=${encodeURIComponent(activeCategory)}`
-          : 'http://localhost:5000/api/products';
+          ? `/api/products?category=${encodeURIComponent(activeCategory)}`
+          : '/api/products';
         const res = await fetch(url);
         if (res.ok) {
           const data = await res.json();

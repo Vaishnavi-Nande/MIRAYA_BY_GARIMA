@@ -67,7 +67,12 @@ app.post('/api/orders', (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log(`Miraya premium backend server running on port ${PORT}`);
-});
+// Export the app for serverless deployment
+module.exports = app;
+
+if (require.main === module) {
+  app.listen(PORT, () => {
+    console.log(`Miraya premium backend server running on port ${PORT}`);
+  });
+}
 

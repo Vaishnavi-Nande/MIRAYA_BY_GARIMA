@@ -6,9 +6,12 @@
     "install:all": "npm install && npm install --prefix backend && npm install --prefix client",
     "backend": "npm start --prefix backend",
     "client": "npm run dev --prefix client",
-    "dev": "concurrently \"npm run backend\" \"npm run client\""
+    "dev": "concurrently \"npm run backend\" \"npm run client\"",
+    "build": "npm install --prefix client && npm run build --prefix client"
   },
   "dependencies": {
-    "concurrently": "^8.2.2"
+    "concurrently": "^8.2.2",
+    "cors": "^2.8.5",
+    "express": "^4.19.2"
   }
 }
