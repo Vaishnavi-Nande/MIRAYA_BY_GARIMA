@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { Routes, Route, useLocation, useNavigate, useParams } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
+import AboutPage from './components/AboutPage';
+import ContactPage from './components/ContactPage';
+import Showcase from './components/Showcase';
 import Collection from './components/Collection';
 import Pillars from './components/Pillars';
 import Footer from './components/Footer';
@@ -22,6 +26,9 @@ export default function App() {
   
   // Floating Toast Notification
   const [toast, setToast] = useState({ message: '', show: false });
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   // Fetch creations from backend
   useEffect(() => {
@@ -70,6 +77,9 @@ export default function App() {
     fetchProducts();
   }, [activeCategory]);
 
+
+
+
   const showToast = (message) => {
     setToast({ message, show: true });
     setTimeout(() => {
@@ -78,11 +88,10 @@ export default function App() {
   };
 
   const handleSelectCategory = (category) => {
-    setActiveCategory(category);
-    // Smooth scroll down to catalog grid when filtering
     if (category) {
-      const grid = document.getElementById('masterpieces');
-      if (grid) grid.scrollIntoView({ behavior: 'smooth' });
+      navigate(`/collections/${category.toLowerCase().replace(/ /g, '-')}`);
+    } else {
+      navigate('/collections');
     }
   };
 
@@ -134,6 +143,7 @@ export default function App() {
 
   return (
     <div className="overflow-x-hidden" style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column', overflowX: 'hidden' }}>
+      <ScrollToTop />
       {/* Sticky header navbar */}
       <Navbar 
         cartCount={totalCartCount} 
@@ -141,31 +151,50 @@ export default function App() {
         onSelectCategory={handleSelectCategory}
       />
 
-      {/* Hero Panel */}
-      <Hero onExploreClick={() => handleSelectCategory(null)} />
+      <Routes>
+        <Route path="/" element={
+          <>
+            <Hero onExploreClick={() => navigate('/collections')} />
+            <ScrollReveal>
+              <About />
+            </ScrollReveal>
+            <ScrollReveal>
+              <Showcase products={products} />
+            </ScrollReveal>
+            <ScrollReveal>
+              <Pillars />
+            </ScrollReveal>
+          </>
+        } />
 
-      {/* About narrative grid */}
-      <ScrollReveal>
-        <About />
-      </ScrollReveal>
+        <Route path="/collections" element={
+          <AllCollectionsRouteWrapper 
+            products={products}
+            activeCategory={activeCategory}
+            onSelectCategory={handleSelectCategory}
+            onProductClick={handleProductClick}
+            setActiveCategory={setActiveCategory}
+          />
+        } />
 
-      {/* Interactive collections grid */}
-      <ScrollReveal>
-        <Collection 
-          products={products}
-          activeCategory={activeCategory}
-          onSelectCategory={handleSelectCategory}
-          onProductClick={handleProductClick}
-        />
-      </ScrollReveal>
+        <Route path="/collections/:categorySlug" element={
+          <CollectionsRouteWrapper 
+            products={products}
+            activeCategory={activeCategory}
+            onSelectCategory={handleSelectCategory}
+            onProductClick={handleProductClick}
+            setActiveCategory={setActiveCategory}
+          />
+        } />
 
-      {/* Brand pillars */}
-      <ScrollReveal>
-        <Pillars />
-      </ScrollReveal>
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+
+        <Route path="/contact-us" element={null} />
+      </Routes>
 
       {/* Premium burgundy footer */}
-      <Footer />
+      {location.pathname.toLowerCase() !== '/about' && location.pathname.toLowerCase() !== '/contact' && <Footer />}
 
       {/* Modals */}
       <ProductDetailModal 
@@ -201,5 +230,70 @@ export default function App() {
         {toast.message}
       </div>
     </div>
+  );
+}
+
+// Scroll to top on navigation path change
+function ScrollToTop() {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
+  return null;
+}
+
+// Wrapper for all collections
+function AllCollectionsRouteWrapper({ setActiveCategory, products, activeCategory, onSelectCategory, onProductClick }) {
+  useEffect(() => {
+    setActiveCategory(null);
+  }, [setActiveCategory]);
+
+  return (
+    <ScrollReveal>
+      <Collection 
+        products={products}
+        activeCategory={activeCategory}
+        onSelectCategory={onSelectCategory}
+        onProductClick={onProductClick}
+      />
+    </ScrollReveal>
+  );
+}
+
+// Wrapper for filtered collection slugs
+function CollectionsRouteWrapper({ products, activeCategory, onSelectCategory, onProductClick, setActiveCategory }) {
+  const { categorySlug } = useParams();
+
+  useEffect(() => {
+    const collectionsList = [
+      { name: 'Lehenga', value: 'Lehenga' },
+      { name: 'Saree', value: 'Saree' },
+      { name: 'Anarkali Suit', value: 'Anarkali Suit' },
+      { name: 'Sharara Suit', value: 'Sharara Suit' },
+      { name: 'Indo-Western Gown', value: 'Indo-Western Gown' },
+      { name: 'Kurti', value: 'Kurti' },
+      { name: 'Salwar Suit', value: 'Salwar Suit' },
+      { name: 'Co-ord Set', value: 'Co-ord Set' }
+    ];
+    const decoded = decodeURIComponent(categorySlug).replace(/-/g, ' ').toLowerCase();
+    const matched = collectionsList.find(c => c.value.toLowerCase() === decoded || c.name.toLowerCase() === decoded);
+    if (matched) {
+      setActiveCategory(matched.value);
+    } else {
+      setActiveCategory(null);
+    }
+  }, [categorySlug, setActiveCategory]);
+
+  return (
+    <ScrollReveal>
+      <Collection 
+        products={products}
+        activeCategory={activeCategory}
+        onSelectCategory={onSelectCategory}
+        onProductClick={onProductClick}
+      />
+    </ScrollReveal>
   );
 }

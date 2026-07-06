@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileCollectionsOpen, setIsMobileCollectionsOpen] = useState(false);
+
+  const navigate = useNavigate();
+  const navigateTo = (path) => {
+    navigate(path);
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,7 +40,7 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
       <div className="container-fluid" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%' }}>
         
         {/* Brand Logo & Name */}
-        <div className="navbar-brand-container" style={{ display: 'flex', alignItems: 'center', gap: '16px', cursor: 'pointer' }} onClick={() => { onSelectCategory(null); setIsMobileMenuOpen(false); }}>
+        <div className="navbar-brand-container" style={{ display: 'flex', alignItems: 'center', gap: '16px', cursor: 'pointer' }} onClick={() => { navigateTo('/'); setIsMobileMenuOpen(false); }}>
           <img 
             src="/R.png" 
             alt="Miraya by Garima Logo" 
@@ -50,6 +56,23 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
         {/* Navigation Links */}
         <div className="desktop-nav-links" style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
           
+          <a 
+            href="/"
+            onClick={(e) => { e.preventDefault(); navigateTo('/'); }}
+            style={{ 
+              fontFamily: 'var(--font-body)', 
+              fontSize: '13px', 
+              letterSpacing: '0.15em', 
+              textTransform: 'uppercase', 
+              color: 'var(--text-dark)', 
+              cursor: 'pointer',
+              fontWeight: '500',
+              textDecoration: 'none'
+            }}
+          >
+            Home
+          </a>
+
           {/* Collection Dropdown */}
           <div 
             style={{ position: 'relative' }}
@@ -84,7 +107,7 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
                 animation: 'fadeIn 0.2s ease-out forwards'
               }}>
                 <button 
-                  onClick={() => { onSelectCategory(null); setIsDropdownOpen(false); }}
+                  onClick={() => { navigateTo('/collections'); setIsDropdownOpen(false); }}
                   style={{
                     textAlign: 'left',
                     padding: '12px 20px',
@@ -105,7 +128,7 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
                 {collections.map((col) => (
                   <button 
                     key={col.value}
-                    onClick={() => { onSelectCategory(col.value); setIsDropdownOpen(false); }}
+                    onClick={() => { navigateTo(`/collections/${col.value.toLowerCase().replace(/ /g, '-')}`); setIsDropdownOpen(false); }}
                     style={{
                       textAlign: 'left',
                       padding: '12px 20px',
@@ -136,10 +159,7 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
           </div>
 
           <span 
-            onClick={() => {
-              const el = document.getElementById('about');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
+            onClick={() => navigateTo('/about')}
             style={{ 
               fontFamily: 'var(--font-body)', 
               fontSize: '13px', 
@@ -153,29 +173,9 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
             About
           </span>
 
-          <span 
-            onClick={() => {
-              const el = document.getElementById('brand-pillars');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
-            style={{ 
-              fontFamily: 'var(--font-body)', 
-              fontSize: '13px', 
-              letterSpacing: '0.15em', 
-              textTransform: 'uppercase', 
-              color: 'var(--text-dark)', 
-              cursor: 'pointer',
-              fontWeight: '500'
-            }}
-          >
-            Pillars
-          </span>
 
           <span 
-            onClick={() => {
-              const el = document.getElementById('footer-brand');
-              if (el) el.scrollIntoView({ behavior: 'smooth' });
-            }}
+            onClick={() => navigateTo('/contact')}
             style={{ 
               fontFamily: 'var(--font-body)', 
               fontSize: '13px', 
@@ -186,7 +186,7 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
               fontWeight: '500'
             }}
           >
-            Inquire
+            Contact Us
           </span>
         </div>
 
@@ -249,6 +249,19 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
 
       {/* Mobile Menu Drawer Overlay */}
       <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
+        <a 
+          href="/"
+          className="mobile-menu-link"
+          style={{ textDecoration: 'none' }}
+          onClick={(e) => {
+            e.preventDefault();
+            navigateTo('/');
+            setIsMobileMenuOpen(false);
+          }}
+        >
+          Home
+        </a>
+
         <button 
           className="mobile-menu-link" 
           onClick={() => setIsMobileCollectionsOpen(!isMobileCollectionsOpen)}
@@ -261,10 +274,8 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
           <button 
             className="mobile-submenu-btn"
             onClick={() => {
-              onSelectCategory(null);
+              navigateTo('/collections');
               setIsMobileMenuOpen(false);
-              const grid = document.getElementById('masterpieces');
-              if (grid) grid.scrollIntoView({ behavior: 'smooth' });
             }}
           >
             All Masterpieces
@@ -274,10 +285,8 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
               key={col.value}
               className="mobile-submenu-btn"
               onClick={() => {
-                onSelectCategory(col.value);
+                navigateTo(`/collections/${col.value.toLowerCase().replace(/ /g, '-')}`);
                 setIsMobileMenuOpen(false);
-                const grid = document.getElementById('masterpieces');
-                if (grid) grid.scrollIntoView({ behavior: 'smooth' });
               }}
             >
               {col.name}
@@ -288,34 +297,22 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
         <button 
           className="mobile-menu-link"
           onClick={() => {
+            navigateTo('/about');
             setIsMobileMenuOpen(false);
-            const el = document.getElementById('about');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
           }}
         >
           About
         </button>
 
-        <button 
-          className="mobile-menu-link"
-          onClick={() => {
-            setIsMobileMenuOpen(false);
-            const el = document.getElementById('brand-pillars');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
-          }}
-        >
-          Pillars
-        </button>
 
         <button 
           className="mobile-menu-link"
           onClick={() => {
+            navigateTo('/contact');
             setIsMobileMenuOpen(false);
-            const el = document.getElementById('footer-brand');
-            if (el) el.scrollIntoView({ behavior: 'smooth' });
           }}
         >
-          Inquire
+          Contact Us
         </button>
       </div>
     </nav>
