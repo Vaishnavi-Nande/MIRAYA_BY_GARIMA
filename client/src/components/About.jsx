@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function About() {
   return (
-    <section className="border-grid-bottom" style={{ backgroundColor: 'var(--bg-warm-ivory)' }}>
+    <section id="about" className="border-grid-bottom" style={{ backgroundColor: 'var(--bg-warm-ivory)' }}>
       {/* 2-Column Intro Section */}
       <div className="about-row" style={{ display: 'flex', flexWrap: 'wrap', width: '100%' }}>
         {/* Left Column: Title */}

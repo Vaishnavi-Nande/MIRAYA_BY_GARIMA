@@ -34,17 +34,18 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
       <div className="container-fluid" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%' }}>
         
         {/* Brand Logo & Name */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px', cursor: 'pointer' }} onClick={() => { onSelectCategory(null); setIsMobileMenuOpen(false); }}>
+        <div className="navbar-brand-container" style={{ display: 'flex', alignItems: 'center', gap: '16px', cursor: 'pointer' }} onClick={() => { onSelectCategory(null); setIsMobileMenuOpen(false); }}>
           <img 
             src="/R.png" 
             alt="Miraya by Garima Logo" 
+            className="navbar-logo"
             style={{ height: '48px', width: 'auto', padding: '4px' }} 
             onError={(e) => {
               // fallback to logo R.png if R.png fails
               e.target.src = '/logo R.png';
             }}
           />
-          <span style={{ 
+          <span className="navbar-logo-text" style={{ 
             fontFamily: 'var(--font-heading)', 
             fontSize: '24px', 
             letterSpacing: '0.15em', 
@@ -146,6 +147,24 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
 
           <span 
             onClick={() => {
+              const el = document.getElementById('about');
+              if (el) el.scrollIntoView({ behavior: 'smooth' });
+            }}
+            style={{ 
+              fontFamily: 'var(--font-body)', 
+              fontSize: '13px', 
+              letterSpacing: '0.15em', 
+              textTransform: 'uppercase', 
+              color: 'var(--text-dark)', 
+              cursor: 'pointer',
+              fontWeight: '500'
+            }}
+          >
+            About
+          </span>
+
+          <span 
+            onClick={() => {
               const el = document.getElementById('brand-pillars');
               if (el) el.scrollIntoView({ behavior: 'smooth' });
             }}
@@ -182,10 +201,11 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
         </div>
 
         {/* Shopping Bag & Hamburger */}
-        <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <div className="navbar-actions" style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
           
           <div 
             onClick={onCartClick} 
+            className="navbar-bag-btn"
             style={{ 
               display: 'flex', 
               alignItems: 'center', 
@@ -274,6 +294,17 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
             </button>
           ))}
         </div>
+
+        <button 
+          className="mobile-menu-link"
+          onClick={() => {
+            setIsMobileMenuOpen(false);
+            const el = document.getElementById('about');
+            if (el) el.scrollIntoView({ behavior: 'smooth' });
+          }}
+        >
+          About
+        </button>
 
         <button 
           className="mobile-menu-link"

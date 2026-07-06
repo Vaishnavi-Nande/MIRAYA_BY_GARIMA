@@ -222,7 +222,7 @@ export default function Footer() {
               }}>
                 Services
               </h4>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {['Contact Boutique', 'Sizing Consultation', 'Shipping & Customs', 'Returns & Exchanges', 'Care & Restorations'].map((item) => (
                   <li key={item}>
                     <span style={{ 
@@ -234,13 +234,52 @@ export default function Footer() {
                     }}
                     onMouseEnter={(e) => e.target.style.color = 'var(--bg-warm-ivory)'}
                     onMouseLeave={(e) => e.target.style.color = 'rgba(248, 245, 240, 0.7)'}
-                    onClick={() => alert(`Consultation service detail: Please contact concierge@mirayabygarima.com`)}
+                    onClick={() => {
+                      if (item === 'Contact Boutique') {
+                        alert(
+                          `Official Contact Information:\n\n` +
+                          `Address: Shop no. UG/5, Jagat Plaza, Mouze Pandharabodi, Law College Square, Amravati Rd, Nagpur, Maharashtra 440033\n` +
+                          `Email: hello@miraya.com\n` +
+                          `Phone: +91 98765 43210`
+                        );
+                      } else {
+                        alert(`Consultation service detail: Please contact hello@miraya.com`);
+                      }
+                    }}
                     >
                       {item}
                     </span>
                   </li>
                 ))}
               </ul>
+            </div>
+
+            {/* Boutique Contact Details Column */}
+            <div style={{ minWidth: '220px', flex: '1 1 200px' }}>
+              <h4 style={{ 
+                color: 'var(--highlight-gold)', 
+                fontSize: '12px', 
+                letterSpacing: '0.2em', 
+                textTransform: 'uppercase',
+                marginBottom: '20px',
+                fontFamily: 'var(--font-body)',
+                fontWeight: '600'
+              }}>
+                Boutique
+              </h4>
+              <div style={{ 
+                display: 'flex', 
+                flexDirection: 'column', 
+                gap: '12px', 
+                color: 'rgba(248, 245, 240, 0.7)', 
+                fontFamily: 'var(--font-body)', 
+                fontSize: '13px', 
+                lineHeight: '1.6' 
+              }}>
+                <p style={{ margin: 0 }}>Shop no. UG/5, Jagat Plaza, Mouze Pandharabodi, Law College Square, Amravati Rd, Nagpur, Maharashtra 440033</p>
+                <p style={{ margin: 0 }}>Email: <a href="mailto:hello@miraya.com" style={{ color: 'inherit', textDecoration: 'none', transition: 'var(--transition-fast)' }} onMouseEnter={(e) => e.target.style.color = 'var(--bg-warm-ivory)'} onMouseLeave={(e) => e.target.style.color = 'rgba(248, 245, 240, 0.7)'}>hello@miraya.com</a></p>
+                <p style={{ margin: 0 }}>Phone: +91 98765 43210</p>
+              </div>
             </div>
           </div>
 

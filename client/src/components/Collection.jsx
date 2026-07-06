@@ -36,7 +36,7 @@ export default function Collection({ products, activeCategory, onSelectCategory,
       </div>
 
       {/* Grid of Product Cards */}
-      <div className="grid-cols-4 animate-fade-in-quick" key={activeCategory || 'all'}>
+      <div className="grid-cols-4 animate-fade-in-quick grid grid-cols-1 md:grid-cols-3" key={activeCategory || 'all'}>
         {products.map((product) => (
           <div 
             key={product.id}
