@@ -277,8 +277,12 @@ function CollectionsRouteWrapper({ products, activeCategory, onSelectCategory, o
       { name: 'Salwar Suit', value: 'Salwar Suit' },
       { name: 'Co-ord Set', value: 'Co-ord Set' }
     ];
-    const decoded = decodeURIComponent(categorySlug).replace(/-/g, ' ').toLowerCase();
-    const matched = collectionsList.find(c => c.value.toLowerCase() === decoded || c.name.toLowerCase() === decoded);
+    const decoded = decodeURIComponent(categorySlug).replace(/[- ]/g, '').toLowerCase();
+    const matched = collectionsList.find(c => {
+      const valClean = c.value.replace(/[- ]/g, '').toLowerCase();
+      const nameClean = c.name.replace(/[- ]/g, '').toLowerCase();
+      return valClean === decoded || nameClean === decoded;
+    });
     if (matched) {
       setActiveCategory(matched.value);
     } else {
