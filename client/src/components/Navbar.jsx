@@ -45,16 +45,6 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
               e.target.src = '/logo R.png';
             }}
           />
-          <span className="navbar-logo-text" style={{ 
-            fontFamily: 'var(--font-heading)', 
-            fontSize: '24px', 
-            letterSpacing: '0.15em', 
-            color: 'var(--accent-burgundy)',
-            fontWeight: '300',
-            textTransform: 'uppercase'
-          }}>
-            Miraya
-          </span>
         </div>
 
         {/* Navigation Links */}
