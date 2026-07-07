@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import ScrollReveal from './ScrollReveal';
 
 export default function Showcase({ products }) {
   const navigate = useNavigate();
@@ -33,113 +34,97 @@ export default function Showcase({ products }) {
         const romanIndex = romanNumerals[index];
 
         return (
-          <div 
-            key={cat.value} 
-            className="showcase-row border-grid-bottom" 
-            style={{ 
-              display: 'flex', 
-              flexWrap: 'wrap', 
-              width: '100%',
-              flexDirection: isEven ? 'row-reverse' : 'row'
-            }}
-          >
-            {/* Text Column */}
+          <ScrollReveal key={cat.value}>
             <div 
-              className="showcase-text-col" 
+              className="showcase-row border-grid-bottom grid-cols-12" 
               style={{ 
-                flex: '1 1 50%', 
-                minWidth: '320px',
-                padding: '80px 60px', 
-                boxSizing: 'border-box',
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-                backgroundColor: 'var(--bg-white)',
-                borderRight: !isEven ? '1px solid var(--gold-border)' : 'none',
-                borderLeft: isEven ? '1px solid var(--gold-border)' : 'none'
+                width: '100%'
               }}
             >
-              <span style={{ 
-                fontFamily: 'var(--font-body)', 
-                fontSize: '11px', 
-                letterSpacing: '0.2em', 
-                color: 'var(--highlight-gold)', 
-                fontWeight: '600',
-                textTransform: 'uppercase',
-                marginBottom: '16px'
-              }}>
-                COLLECTION {romanIndex}
-              </span>
-              <h3 style={{ 
-                fontFamily: 'var(--font-heading)', 
-                fontSize: '36px', 
-                color: 'var(--accent-burgundy)', 
-                letterSpacing: '0.05em',
-                fontWeight: '300',
-                marginBottom: '24px',
-                textTransform: 'none'
-              }}>
-                {cat.label}
-              </h3>
-              <p style={{ 
-                fontFamily: 'var(--font-body)', 
-                fontSize: '15px', 
-                lineHeight: '1.7', 
-                color: 'var(--text-dark)', 
-                marginBottom: '32px',
-                textAlign: 'justify'
-              }}>
-                {cat.narrative}
-              </p>
-              <div>
-                <button 
-                  onClick={() => navigate(`/collections/${cat.value.toLowerCase().replace(/ /g, '-')}`)}
-                  className="luxury-link"
-                  style={{ 
-                    fontFamily: 'var(--font-body)', 
-                    fontSize: '12px', 
-                    letterSpacing: '0.18em', 
-                    color: 'var(--accent-burgundy)', 
-                    background: 'transparent',
-                    border: 'none',
-                    paddingBottom: '6px',
-                    fontWeight: '600',
-                    cursor: 'pointer',
-                    textTransform: 'uppercase'
-                  }}
-                >
-                  EXPLORE {cat.name}S →
-                </button>
-              </div>
-            </div>
-
-            {/* Image Column */}
-            <div 
-              className="showcase-image-col" 
-              style={{ 
-                flex: '1 1 50%', 
-                minWidth: '320px',
-                height: '500px',
-                position: 'relative',
-                overflow: 'hidden'
-              }}
-            >
+              {/* Text Column */}
               <div 
+                className={`showcase-text-col col-span-5-lg ${isEven ? 'order-2-lg' : 'order-1-lg'}`}
                 style={{ 
-                  width: '100%', 
-                  height: '100%', 
+                  minWidth: '320px',
+                  padding: '120px 60px', 
+                  boxSizing: 'border-box',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                  backgroundColor: 'var(--bg-white)',
+                  borderRight: !isEven ? '1px solid var(--gold-border)' : 'none',
+                  borderLeft: isEven ? '1px solid var(--gold-border)' : 'none'
+                }}
+              >
+                <span style={{ 
+                  fontFamily: 'var(--font-body)', 
+                  fontSize: '11px', 
+                  letterSpacing: '0.2em', 
+                  color: 'var(--highlight-gold)', 
+                  fontWeight: '600',
+                  textTransform: 'uppercase',
+                  marginBottom: '16px'
+                }}>
+                  COLLECTION {romanIndex}
+                </span>
+                <h3 style={{ 
+                  fontFamily: 'var(--font-heading)', 
+                  fontSize: '36px', 
+                  color: 'var(--accent-burgundy)', 
+                  letterSpacing: '0.05em',
+                  fontWeight: '300',
+                  marginBottom: '24px',
+                  textTransform: 'none'
+                }}>
+                  {cat.label}
+                </h3>
+                <p style={{ 
+                  fontFamily: 'var(--font-body)', 
+                  fontSize: '15px', 
+                  lineHeight: '1.7', 
+                  color: 'var(--text-dark)', 
+                  marginBottom: '32px',
+                  textAlign: 'justify'
+                }}>
+                  {cat.narrative}
+                </p>
+                <div>
+                  <button 
+                    onClick={() => navigate(`/collections/${cat.value.toLowerCase().replace(/ /g, '-')}`)}
+                    className="premium-cta-btn"
+                  >
+                    <span>EXPLORE {cat.name}S</span> <span className="arrow-icon">→</span>
+                  </button>
+                </div>
+              </div>
+
+              {/* Image Column */}
+              <div 
+                className={`showcase-image-col col-span-7-lg ${isEven ? 'order-1-lg' : 'order-2-lg'}`}
+                style={{ 
+                  minWidth: '320px',
+                  height: '550px',
+                  position: 'relative',
                   overflow: 'hidden'
                 }}
-                className="showcase-zoom-container"
               >
-                <img 
-                  src={imageUrl} 
-                  alt={cat.label} 
-                  className="showcase-image-frame image-smooth-fade"
-                />
+                <div 
+                  style={{ 
+                    width: '100%', 
+                    height: '100%', 
+                    overflow: 'hidden'
+                  }}
+                  className="showcase-zoom-container"
+                >
+                  <img 
+                    src={imageUrl} 
+                    alt={cat.label} 
+                    className="showcase-image-frame image-smooth-fade"
+                  />
+                </div>
               </div>
             </div>
-          </div>
+          </ScrollReveal>
         );
       })}
     </section>

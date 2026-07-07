@@ -79,7 +79,7 @@ export default function Hero({ onExploreClick }) {
         <div>
           <a href="#masterpieces" className="pointer-events-auto" style={{ pointerEvents: 'auto', textDecoration: 'none', display: 'inline-block' }}>
             <button className="hero-ghost-btn" onClick={onExploreClick} style={{ marginTop: 0 }}>
-              EXPLORE MASTERPIECES
+              <span>EXPLORE MASTERPIECES</span> <span className="arrow-icon">→</span>
             </button>
           </a>
         </div>

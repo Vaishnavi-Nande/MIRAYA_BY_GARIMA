@@ -14,20 +14,18 @@ export default function Collection({ products, activeCategory, onSelectCategory,
   ];
 
   return (
-    <section id="masterpieces" className="border-grid-bottom" style={{ backgroundColor: 'var(--bg-white)' }}>
+    <section id="masterpieces" className="border-grid-bottom" style={{ backgroundColor: 'var(--bg-white)', paddingTop: 'var(--navbar-height)' }}>
       {/* Category Navigation Bar */}
-      <div className="border-grid-bottom category-scroll-container" style={{ 
-        padding: '30px 40px',
-        display: 'flex', 
-        justifyContent: 'center', 
-        flexWrap: 'wrap', 
-        gap: '12px',
-        backgroundColor: 'var(--bg-warm-ivory)'
-      }}>
+      <div 
+        className="border-grid-bottom category-scroll-container flex flex-wrap items-center justify-center gap-x-4 gap-y-3 w-full max-w-7xl mx-auto px-6 py-6 mb-8" 
+        style={{ 
+          backgroundColor: 'var(--bg-warm-ivory)'
+        }}
+      >
         {categories.map((cat) => (
           <button
             key={cat.label}
-            className={`category-tab ${activeCategory === cat.value ? 'active' : ''}`}
+            className={`category-tab flex-shrink-0 ${activeCategory === cat.value ? 'active' : ''}`}
             onClick={() => onSelectCategory(cat.value)}
           >
             {cat.label}

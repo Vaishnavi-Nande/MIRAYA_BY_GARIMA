@@ -8,7 +8,7 @@ export default function About() {
         {/* Left Column: Title */}
         <div className="about-col-left" style={{ 
           flex: '1 1 40%', 
-          padding: '80px 60px', 
+          padding: '120px 60px', 
           borderRight: '1px solid var(--gold-border)',
           display: 'flex',
           flexDirection: 'column',
@@ -29,7 +29,7 @@ export default function About() {
         {/* Right Column: Narrative */}
         <div className="about-col-right" style={{ 
           flex: '1 1 60%', 
-          padding: '80px 60px', 
+          padding: '120px 60px', 
           display: 'flex', 
           flexDirection: 'column', 
           justifyContent: 'center' 
@@ -48,7 +48,7 @@ export default function About() {
       </div>
 
       {/* Inner panel with macro textile embroidery detail shot */}
-      <div className="border-grid-top about-textile-container" style={{ padding: '40px' }}>
+      <div className="border-grid-top about-textile-container" style={{ padding: '80px 40px' }}>
         <div 
           className="editorial-image-container about-textile-frame" 
           style={{ 

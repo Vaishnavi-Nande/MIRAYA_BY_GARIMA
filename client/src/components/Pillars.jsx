@@ -22,7 +22,7 @@ export default function Pillars() {
   return (
     <section id="brand-pillars" className="border-grid-bottom" style={{ backgroundColor: 'var(--bg-warm-ivory)' }}>
       {/* Title block */}
-      <div className="border-grid-bottom" style={{ padding: '60px 40px', textAlign: 'center' }}>
+      <div className="border-grid-bottom" style={{ padding: '100px 40px', textAlign: 'center' }}>
         <span style={{ 
           fontFamily: 'var(--font-body)', 
           fontSize: '11px', 
@@ -47,7 +47,7 @@ export default function Pillars() {
             key={p.title} 
             style={{ 
               flex: '1 1 33.333%', 
-              padding: '60px 40px', 
+              padding: '100px 40px', 
               borderRight: idx < 2 ? '1px solid var(--gold-border)' : 'none',
               backgroundColor: 'var(--bg-warm-ivory)',
               display: 'flex',
