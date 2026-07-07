@@ -94,27 +94,18 @@ export default function Showcase({ products }) {
               <div>
                 <button 
                   onClick={() => navigate(`/collections/${cat.value.toLowerCase().replace(/ /g, '-')}`)}
+                  className="luxury-link"
                   style={{ 
                     fontFamily: 'var(--font-body)', 
                     fontSize: '12px', 
-                    letterSpacing: '0.15em', 
+                    letterSpacing: '0.18em', 
                     color: 'var(--accent-burgundy)', 
                     background: 'transparent',
                     border: 'none',
-                    borderBottom: '1px solid var(--accent-burgundy)',
-                    paddingBottom: '4px',
+                    paddingBottom: '6px',
                     fontWeight: '600',
                     cursor: 'pointer',
-                    transition: 'all 0.3s ease',
                     textTransform: 'uppercase'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.target.style.color = 'var(--highlight-gold)';
-                    e.target.style.borderColor = 'var(--highlight-gold)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.target.style.color = 'var(--accent-burgundy)';
-                    e.target.style.borderColor = 'var(--accent-burgundy)';
                   }}
                 >
                   EXPLORE {cat.name}S →
@@ -137,7 +128,6 @@ export default function Showcase({ products }) {
                 style={{ 
                   width: '100%', 
                   height: '100%', 
-                  transition: 'transform 0.8s ease',
                   overflow: 'hidden'
                 }}
                 className="showcase-zoom-container"
@@ -145,11 +135,7 @@ export default function Showcase({ products }) {
                 <img 
                   src={imageUrl} 
                   alt={cat.label} 
-                  style={{ 
-                    width: '100%', 
-                    height: '100%', 
-                    objectFit: 'cover'
-                  }} 
+                  className="showcase-image-frame image-smooth-fade"
                 />
               </div>
             </div>

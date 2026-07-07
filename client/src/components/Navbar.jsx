@@ -59,10 +59,11 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
           <a 
             href="/"
             onClick={(e) => { e.preventDefault(); navigateTo('/'); }}
+            className="luxury-link"
             style={{ 
               fontFamily: 'var(--font-body)', 
               fontSize: '13px', 
-              letterSpacing: '0.15em', 
+              letterSpacing: '0.18em', 
               textTransform: 'uppercase', 
               color: 'var(--text-dark)', 
               cursor: 'pointer',
@@ -79,16 +80,19 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
             onMouseEnter={() => setIsDropdownOpen(true)}
             onMouseLeave={() => setIsDropdownOpen(false)}
           >
-            <span style={{ 
-              fontFamily: 'var(--font-body)', 
-              fontSize: '13px', 
-              letterSpacing: '0.15em', 
-              textTransform: 'uppercase', 
-              color: 'var(--text-dark)', 
-              cursor: 'pointer',
-              fontWeight: '500',
-              paddingBottom: '8px'
-            }}>
+            <span 
+              className="luxury-link"
+              style={{ 
+                fontFamily: 'var(--font-body)', 
+                fontSize: '13px', 
+                letterSpacing: '0.18em', 
+                textTransform: 'uppercase', 
+                color: 'var(--text-dark)', 
+                cursor: 'pointer',
+                fontWeight: '500',
+                paddingBottom: '8px'
+              }}
+            >
               Collections <span style={{ fontSize: '10px', marginLeft: '4px', verticalAlign: 'middle' }}>▼</span>
             </span>
 
@@ -115,7 +119,7 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
                     background: 'none',
                     fontSize: '13px',
                     fontFamily: 'var(--font-body)',
-                    letterSpacing: '0.1em',
+                    letterSpacing: '0.13em',
                     color: 'var(--text-dark)',
                     cursor: 'pointer',
                     transition: 'var(--transition-fast)'
@@ -136,7 +140,7 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
                       background: 'none',
                       fontSize: '13px',
                       fontFamily: 'var(--font-body)',
-                      letterSpacing: '0.1em',
+                      letterSpacing: '0.13em',
                       color: 'var(--text-dark)',
                       cursor: 'pointer',
                       transition: 'var(--transition-fast)',
@@ -160,10 +164,11 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
 
           <span 
             onClick={() => navigateTo('/about')}
+            className="luxury-link"
             style={{ 
               fontFamily: 'var(--font-body)', 
               fontSize: '13px', 
-              letterSpacing: '0.15em', 
+              letterSpacing: '0.18em', 
               textTransform: 'uppercase', 
               color: 'var(--text-dark)', 
               cursor: 'pointer',
@@ -176,10 +181,11 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
 
           <span 
             onClick={() => navigateTo('/contact')}
+            className="luxury-link"
             style={{ 
               fontFamily: 'var(--font-body)', 
               fontSize: '13px', 
-              letterSpacing: '0.15em', 
+              letterSpacing: '0.18em', 
               textTransform: 'uppercase', 
               color: 'var(--text-dark)', 
               cursor: 'pointer',

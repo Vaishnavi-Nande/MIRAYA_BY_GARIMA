@@ -63,7 +63,7 @@ export default function Collection({ products, activeCategory, onSelectCategory,
               <img 
                 src={product.image} 
                 alt={product.name} 
-                className="editorial-image-frame"
+                className="editorial-image-frame image-smooth-fade"
                 onError={(e) => {
                   e.target.src = '/images/hero_model.png';
                 }}
