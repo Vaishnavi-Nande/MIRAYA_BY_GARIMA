@@ -1144,3 +1144,51 @@ h1, h2, h3, h4, h5, h6 {
 .mb-8 {
   margin-bottom: 2rem !important;
 }
+
+/* Premium Image Framing utility classes */
+.border {
+  border-width: 1px !important;
+  border-style: solid !important;
+}
+.border-stone-300\/60 {
+  border-color: var(--gold-border) !important;
+}
+.p-3 {
+  padding: 0.75rem !important;
+}
+.w-full {
+  width: 100% !important;
+}
+.h-full {
+  height: 100% !important;
+}
+.overflow-hidden {
+  overflow: hidden !important;
+}
+.object-cover {
+  object-fit: cover !important;
+}
+@media (min-width: 769px) {
+  .md\:p-4 {
+    padding: 1rem !important;
+  }
+}
+
+/* Premium Image Hover Transitions */
+.h-auto {
+  height: auto !important;
+}
+.transition-transform {
+  transition-property: transform !important;
+}
+.duration-700 {
+  transition-duration: 700ms !important;
+}
+.ease-out {
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1) !important;
+}
+.hover\:scale-105:hover {
+  transform: scale(1.05) !important;
+}
+
+

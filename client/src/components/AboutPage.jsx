@@ -9,7 +9,7 @@ export default function AboutPage() {
       {/* 1. Top Banner Block */}
       <ScrollReveal>
         <div
-          className="about-banner border-grid-bottom"
+          className="about-banner border-grid-bottom overflow-hidden"
           style={{
             height: '500px',
             position: 'relative',
@@ -22,7 +22,8 @@ export default function AboutPage() {
           <img
             src="/images/textile_detail.png"
             alt="Discover Miraya Background"
-            style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
+            className="w-full h-auto object-cover transition-transform duration-700 ease-out hover:scale-105"
+            style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}
           />
           <div style={{
             position: 'absolute',
@@ -145,7 +146,7 @@ export default function AboutPage() {
 
           {/* Right Column: Image Frame */}
           <div
-            className="about-phil-right"
+            className="about-phil-right overflow-hidden"
             style={{
               flex: '1 1 50%',
               position: 'relative',
@@ -156,7 +157,8 @@ export default function AboutPage() {
             <img
               src="/images/MBYG1.png"
               alt="The Essence of Miraya"
-              style={{ width: '100%', height: '100%', objectFit: 'cover', position: 'absolute', top: 0, left: 0 }}
+              className="w-full h-auto object-cover transition-transform duration-700 ease-out hover:scale-105"
+              style={{ width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}
             />
             <div style={{
               position: 'absolute',

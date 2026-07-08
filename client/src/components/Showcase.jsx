@@ -116,11 +116,13 @@ export default function Showcase({ products }) {
                   }}
                   className="showcase-zoom-container"
                 >
-                  <img 
-                    src={imageUrl} 
-                    alt={cat.label} 
-                    className="showcase-image-frame image-smooth-fade"
-                  />
+                  <div className="border border-stone-300/60 p-3 md:p-4 w-full h-full flex items-center justify-center overflow-hidden">
+                    <img 
+                      src={imageUrl} 
+                      alt={cat.label} 
+                      className="w-full h-full object-cover showcase-image-frame image-smooth-fade"
+                    />
+                  </div>
                 </div>
               </div>
             </div>
