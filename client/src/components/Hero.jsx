@@ -2,17 +2,18 @@ import React from 'react';
 
 export default function Hero({ onExploreClick }) {
   return (
-    <section className="hero-video-section border-grid-bottom" style={{ marginTop: 'var(--navbar-height)' }}>
+    <section className="hero-video-section border-grid-bottom pt-24 md:pt-32 lg:pt-36 w-full min-h-[90vh] lg:min-h-screen relative flex items-center" style={{ marginTop: 0 }}>
       
       {/* Absolute Background Container with Autoplaying Video */}
-      <div className="hero-video-bg-container">
+      <div className="absolute inset-0 w-full h-full overflow-hidden">
         <video 
           src="/hero-bg.mp4" 
           autoPlay 
           loop 
           muted 
           playsInline 
-          className="hero-video-bg"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ objectPosition: 'center top' }}
         />
         {/* Subtle, premium tint mask overlay */}
         <div className="hero-video-overlay" />

@@ -35,9 +35,21 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
     { name: 'Co-ord Set', value: 'Co-ord Set' },
   ];
 
+  const megaMenuCollections = [
+    { name: 'Lehenga', value: 'Lehenga', image: '/images/products/lehenga_crimson.png' },
+    { name: 'Saree', value: 'Saree', image: '/images/products/saree_burgundy.png' },
+    { name: 'Anarkali', value: 'Anarkali Suit', image: '/images/products/anarkali_ivory.png' },
+    { name: 'Indo-Western', value: 'Indo-Western Gown', image: '/images/products/gown_burgundy.png' },
+    { name: 'Co-ord Set', value: 'Co-ord Set', image: '/images/products/coord_emerald.png' },
+    { name: 'Sharara', value: 'Sharara', image: '/images/products/sharara_rose.png' },
+    { name: 'Kurti', value: 'Kurti', image: '/images/products/kurti_gold.png' },
+    { name: 'Salwar Suit', value: 'Salwar Suit', image: '/images/products/salwar_peach.png' }
+  ];
+
   return (
-    <nav className={`navbar navbar-animate ${isScrolled ? 'scrolled' : ''}`}>
-      <div className="container-fluid" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '100%' }}>
+    <div className="absolute top-0 left-0 right-0 w-full z-50 bg-transparent pt-4 navbar-animate">
+      <div className="px-4 md:px-8 max-w-7xl mx-auto">
+        <nav className="relative w-full flex items-center justify-between bg-[#fbfaf7] rounded-full border border-stone-200/50 px-8 py-3 shadow-sm h-16 md:h-20">
         
         {/* Brand Logo & Name */}
         <div className="navbar-brand-container" style={{ display: 'flex', alignItems: 'center', gap: '16px', cursor: 'pointer' }} onClick={() => { navigateTo('/'); setIsMobileMenuOpen(false); }}>
@@ -54,145 +66,101 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
         </div>
 
         {/* Navigation Links */}
-        <div className="desktop-nav-links" style={{ display: 'flex', alignItems: 'center', gap: '40px' }}>
+        <div className="desktop-nav-links flex items-center justify-center gap-10 md:gap-14">
           
           <a 
             href="/"
             onClick={(e) => { e.preventDefault(); navigateTo('/'); }}
-            className="luxury-link"
+            className="luxury-link text-xs tracking-widest font-light text-stone-800 transition-colors duration-300"
             style={{ 
-              fontFamily: 'var(--font-body)', 
-              fontSize: '13px', 
-              letterSpacing: '0.18em', 
-              textTransform: 'uppercase', 
-              color: 'var(--text-dark)', 
-              cursor: 'pointer',
-              fontWeight: '500',
-              textDecoration: 'none'
+              textDecoration: 'none',
+              cursor: 'pointer'
             }}
           >
-            Home
+            HOME
           </a>
 
           {/* Collection Dropdown */}
           <div 
-            style={{ position: 'relative' }}
             onMouseEnter={() => setIsDropdownOpen(true)}
             onMouseLeave={() => setIsDropdownOpen(false)}
           >
             <span 
-              className="luxury-link"
+              className="luxury-link text-xs tracking-widest font-light text-stone-800 transition-colors duration-300"
               style={{ 
-                fontFamily: 'var(--font-body)', 
-                fontSize: '13px', 
-                letterSpacing: '0.18em', 
-                textTransform: 'uppercase', 
-                color: 'var(--text-dark)', 
                 cursor: 'pointer',
-                fontWeight: '500',
-                paddingBottom: '8px'
+                paddingBottom: '20px'
               }}
             >
-              Collections <span style={{ fontSize: '10px', marginLeft: '4px', verticalAlign: 'middle' }}>▼</span>
+              COLLECTION <span style={{ fontSize: '10px', marginLeft: '4px', verticalAlign: 'middle' }}>▼</span>
             </span>
 
             {isDropdownOpen && (
-              <div style={{
-                position: 'absolute',
-                top: '24px',
-                left: '-10px',
-                backgroundColor: 'var(--bg-warm-ivory)',
-                border: '1px solid var(--gold-border)',
-                minWidth: '220px',
-                boxShadow: '0 10px 30px rgba(94, 10, 11, 0.08)',
-                zIndex: 1000,
-                display: 'flex',
-                flexDirection: 'column',
-                animation: 'fadeIn 0.2s ease-out forwards'
-              }}>
-                <button 
-                  onClick={() => { navigateTo('/collections'); setIsDropdownOpen(false); }}
-                  style={{
-                    textAlign: 'left',
-                    padding: '12px 20px',
-                    border: 'none',
-                    background: 'none',
-                    fontSize: '13px',
-                    fontFamily: 'var(--font-body)',
-                    letterSpacing: '0.13em',
-                    color: 'var(--text-dark)',
-                    cursor: 'pointer',
-                    transition: 'var(--transition-fast)'
-                  }}
-                  onMouseEnter={(e) => e.target.style.backgroundColor = 'rgba(198, 164, 106, 0.1)'}
-                  onMouseLeave={(e) => e.target.style.backgroundColor = 'transparent'}
-                >
-                  All Masterpieces
-                </button>
-                {collections.map((col) => (
-                  <button 
+              <div 
+                className="absolute left-0 right-0 top-full mt-2 w-full max-w-7xl mx-auto bg-white/95 backdrop-blur-md border border-stone-200/60 rounded-3xl p-6 shadow-xl grid grid-cols-4 md:grid-cols-5 gap-4 z-50 animate-fade-in"
+                style={{ cursor: 'default' }}
+              >
+                {megaMenuCollections.map((col) => (
+                  <div 
                     key={col.value}
-                    onClick={() => { navigateTo(`/collections/${col.value.toLowerCase().replace(/ /g, '-')}`); setIsDropdownOpen(false); }}
-                    style={{
-                      textAlign: 'left',
-                      padding: '12px 20px',
-                      border: 'none',
-                      background: 'none',
-                      fontSize: '13px',
-                      fontFamily: 'var(--font-body)',
-                      letterSpacing: '0.13em',
-                      color: 'var(--text-dark)',
-                      cursor: 'pointer',
-                      transition: 'var(--transition-fast)',
-                      borderTop: '1px solid rgba(198, 164, 106, 0.15)'
+                    onClick={() => {
+                      navigateTo(`/collections/${col.value.toLowerCase().replace(/ /g, '-')}`);
+                      setIsDropdownOpen(false);
                     }}
-                    onMouseEnter={(e) => {
-                      e.target.style.backgroundColor = 'rgba(198, 164, 106, 0.1)';
-                      e.target.style.color = 'var(--accent-burgundy)';
-                    }}
-                    onMouseLeave={(e) => {
-                      e.target.style.backgroundColor = 'transparent';
-                      e.target.style.color = 'var(--text-dark)';
-                    }}
+                    className="flex flex-col gap-2 group cursor-pointer overflow-hidden rounded-xl"
                   >
-                    {col.name}
-                  </button>
+                    <div className="w-full h-28 bg-stone-100 rounded-xl overflow-hidden mb-2">
+                      <img 
+                        src={col.image} 
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                        alt={col.name} 
+                      />
+                    </div>
+                    <span className="text-xs font-semibold tracking-widest text-stone-800 text-center uppercase">
+                      {col.name}
+                    </span>
+                  </div>
                 ))}
+
+                {/* 9th card: Explore All */}
+                <div 
+                  onClick={() => {
+                    navigateTo('/collections');
+                    setIsDropdownOpen(false);
+                  }}
+                  className="flex flex-col gap-2 group cursor-pointer overflow-hidden rounded-xl"
+                >
+                  <div className="w-full h-28 bg-stone-100 rounded-xl overflow-hidden mb-2 flex items-center justify-center border border-dashed border-stone-300 group-hover:border-stone-500 transition-colors duration-300">
+                    <span className="text-stone-400 group-hover:text-stone-600 transition-colors duration-300 text-lg">→</span>
+                  </div>
+                  <span className="text-xs font-semibold tracking-widest text-stone-500 text-center uppercase">
+                    ALL MASTERPIECES
+                  </span>
+                </div>
+
               </div>
             )}
           </div>
 
           <span 
             onClick={() => navigateTo('/about')}
-            className="luxury-link"
+            className="luxury-link text-xs tracking-widest font-light text-stone-800 transition-colors duration-300"
             style={{ 
-              fontFamily: 'var(--font-body)', 
-              fontSize: '13px', 
-              letterSpacing: '0.18em', 
-              textTransform: 'uppercase', 
-              color: 'var(--text-dark)', 
-              cursor: 'pointer',
-              fontWeight: '500'
+              cursor: 'pointer'
             }}
           >
-            About
+            ABOUT US
           </span>
 
 
           <span 
             onClick={() => navigateTo('/contact')}
-            className="luxury-link"
+            className="luxury-link text-xs tracking-widest font-light text-stone-800 transition-colors duration-300"
             style={{ 
-              fontFamily: 'var(--font-body)', 
-              fontSize: '13px', 
-              letterSpacing: '0.18em', 
-              textTransform: 'uppercase', 
-              color: 'var(--text-dark)', 
-              cursor: 'pointer',
-              fontWeight: '500'
+              cursor: 'pointer'
             }}
           >
-            Contact Us
+            CONTACT US
           </span>
         </div>
 
@@ -251,7 +219,7 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
 
         </div>
 
-      </div>
+      </nav>
 
       {/* Mobile Menu Drawer Overlay */}
       <div className={`mobile-menu-overlay ${isMobileMenuOpen ? 'open' : ''}`}>
@@ -321,6 +289,7 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
           Contact Us
         </button>
       </div>
-    </nav>
+    </div>
+    </div>
   );
 }
