@@ -26,18 +26,24 @@ export default function ContactPage() {
       {/* A. Top Banner Header (Centered) */}
       <ScrollReveal>
         <div 
-          className="contact-banner border-grid-bottom" 
+          className="contact-banner border-grid-bottom relative w-full text-center py-20 overflow-hidden bg-stone-50/50"
           style={{ 
             padding: '120px 20px', 
             textAlign: 'center',
-            backgroundColor: 'var(--bg-white)',
             display: 'flex',
             flexDirection: 'column',
             alignItems: 'center',
             justifyContent: 'center'
           }}
         >
-          <span style={{ 
+          {/* Giant Translucent Watermark Background Layer */}
+          <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
+            <span className="text-8xl md:text-[12rem] font-serif font-light text-stone-300/70 tracking-[0.25em] uppercase select-none">
+              MIRAYA
+            </span>
+          </div>
+
+          <span className="relative z-10" style={{ 
             fontFamily: 'var(--font-body)', 
             fontSize: '11px', 
             letterSpacing: '0.25em', 
@@ -48,7 +54,7 @@ export default function ContactPage() {
           }}>
             GET IN TOUCH
           </span>
-          <h1 style={{ 
+          <h1 className="relative z-10" style={{ 
             fontFamily: 'var(--font-heading)', 
             fontSize: 'clamp(32px, 4vw, 54px)', 
             color: 'var(--accent-burgundy)', 
@@ -59,7 +65,7 @@ export default function ContactPage() {
           }}>
             Visit our <span style={{ fontStyle: 'italic', fontFamily: 'var(--font-heading)' }}>ATELIER</span>
           </h1>
-          <div style={{ width: '40px', height: '1px', backgroundColor: 'var(--highlight-gold)', marginTop: '24px' }}></div>
+          <div className="relative z-10" style={{ width: '40px', height: '1px', backgroundColor: 'var(--highlight-gold)', marginTop: '24px' }}></div>
         </div>
       </ScrollReveal>
 

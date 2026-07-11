@@ -13,7 +13,16 @@ app.use(express.json());
 app.get('/api/products', (req, res) => {
   const { category } = req.query;
   if (category) {
-    const filtered = products.filter(p => p.category.toLowerCase() === category.toLowerCase());
+    const normalize = (str) => {
+      if (!str) return '';
+      return str.toLowerCase().replace(/[- ]/g, '').replace(/s$/, '');
+    };
+    const normCategoryQuery = normalize(category);
+    const filtered = products.filter(p => {
+      const normCat = normalize(p.category);
+      const normColl = normalize(p.collection);
+      return normCat === normCategoryQuery || normColl === normCategoryQuery;
+    });
     return res.json(filtered);
   }
   res.json(products);

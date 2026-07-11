@@ -139,36 +139,34 @@ export default function Footer() {
                 </p>
               )}
             </form>
+
+            {/* Boutique Contact Details */}
+            <div className="mt-12 text-left max-w-sm">
+              <h4 className="text-xs font-medium tracking-[0.25em] text-stone-300 uppercase mb-4" style={{ fontFamily: 'var(--font-body)' }}>
+                Boutique
+              </h4>
+              <div className="text-xs font-light tracking-widest text-stone-400 leading-relaxed space-y-2" style={{ fontFamily: 'var(--font-body)' }}>
+                <p style={{ margin: 0 }}>Shop no. UG/5, Jagat Plaza, Mouze Pandharabodi, Law College Square, Amravati Rd, Nagpur, Maharashtra 440033</p>
+                <p style={{ margin: 0 }}>Email: <a href="mailto:hello@miraya.com" className="text-xs font-light tracking-widest text-stone-400 hover:text-amber-600 transition-colors duration-300" style={{ textDecoration: 'none' }}>hello@miraya.com</a></p>
+                <p style={{ margin: 0 }}>Phone: +91 98765 43210</p>
+              </div>
+            </div>
           </div>
 
           {/* Sitemaps */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '60px', flex: '1 1 400px' }}>
             {/* Catalog Sitemap */}
             <div style={{ minWidth: '150px' }}>
-              <h4 style={{ 
-                color: 'var(--highlight-gold)', 
-                fontSize: '12px', 
-                letterSpacing: '0.2em', 
-                textTransform: 'uppercase',
-                marginBottom: '20px',
-                fontFamily: 'var(--font-body)',
-                fontWeight: '600'
-              }}>
+              <h4 className="text-xs font-medium tracking-[0.25em] text-stone-300 uppercase mb-6" style={{ fontFamily: 'var(--font-body)' }}>
                 Collections
               </h4>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {['Lehengas', 'Sarees', 'Anarkalis', 'Shararas', 'Gowns', 'Kurtis'].map((item) => (
                   <li key={item}>
-                    <a href="#collection-grid" style={{ 
-                      color: 'rgba(248, 245, 240, 0.7)', 
+                    <a href="#collection-grid" className="text-xs font-light tracking-widest text-stone-400 hover:text-amber-600 transition-colors duration-300 block my-3" style={{ 
                       textDecoration: 'none',
-                      fontFamily: 'var(--font-body)',
-                      fontSize: '13px',
-                      transition: 'var(--transition-fast)'
-                    }}
-                    onMouseEnter={(e) => e.target.style.color = 'var(--bg-warm-ivory)'}
-                    onMouseLeave={(e) => e.target.style.color = 'rgba(248, 245, 240, 0.7)'}
-                    >
+                      fontFamily: 'var(--font-body)'
+                    }}>
                       {item}
                     </a>
                   </li>
@@ -178,30 +176,16 @@ export default function Footer() {
 
             {/* Brand Sitemap */}
             <div style={{ minWidth: '150px' }}>
-              <h4 style={{ 
-                color: 'var(--highlight-gold)', 
-                fontSize: '12px', 
-                letterSpacing: '0.2em', 
-                textTransform: 'uppercase',
-                marginBottom: '20px',
-                fontFamily: 'var(--font-body)',
-                fontWeight: '600'
-              }}>
+              <h4 className="text-xs font-medium tracking-[0.25em] text-stone-300 uppercase mb-6" style={{ fontFamily: 'var(--font-body)' }}>
                 The Maison
               </h4>
               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {['Our Story', 'Artisanal Legacy', 'Exhibitions', 'Press', 'Private Dressing', 'Careers'].map((item) => (
                   <li key={item}>
-                    <a href="#brand-pillars" style={{ 
-                      color: 'rgba(248, 245, 240, 0.7)', 
+                    <a href="#brand-pillars" className="text-xs font-light tracking-widest text-stone-400 hover:text-amber-600 transition-colors duration-300 block my-3" style={{ 
                       textDecoration: 'none',
-                      fontFamily: 'var(--font-body)',
-                      fontSize: '13px',
-                      transition: 'var(--transition-fast)'
-                    }}
-                    onMouseEnter={(e) => e.target.style.color = 'var(--bg-warm-ivory)'}
-                    onMouseLeave={(e) => e.target.style.color = 'rgba(248, 245, 240, 0.7)'}
-                    >
+                      fontFamily: 'var(--font-body)'
+                    }}>
                       {item}
                     </a>
                   </li>
@@ -211,29 +195,16 @@ export default function Footer() {
 
             {/* Assistance Sitemap */}
             <div style={{ minWidth: '150px' }}>
-              <h4 style={{ 
-                color: 'var(--highlight-gold)', 
-                fontSize: '12px', 
-                letterSpacing: '0.2em', 
-                textTransform: 'uppercase',
-                marginBottom: '20px',
-                fontFamily: 'var(--font-body)',
-                fontWeight: '600'
-              }}>
+              <h4 className="text-xs font-medium tracking-[0.25em] text-stone-300 uppercase mb-6" style={{ fontFamily: 'var(--font-body)' }}>
                 Services
               </h4>
                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
                 {['Contact Boutique', 'Sizing Consultation', 'Shipping & Customs', 'Returns & Exchanges', 'Care & Restorations'].map((item) => (
                   <li key={item}>
-                    <span style={{ 
-                      color: 'rgba(248, 245, 240, 0.7)', 
+                    <span className="text-xs font-light tracking-widest text-stone-400 hover:text-amber-600 transition-colors duration-300 block my-3" style={{ 
                       fontFamily: 'var(--font-body)',
-                      fontSize: '13px',
-                      cursor: 'pointer',
-                      transition: 'var(--transition-fast)'
+                      cursor: 'pointer'
                     }}
-                    onMouseEnter={(e) => e.target.style.color = 'var(--bg-warm-ivory)'}
-                    onMouseLeave={(e) => e.target.style.color = 'rgba(248, 245, 240, 0.7)'}
                     onClick={() => {
                       if (item === 'Contact Boutique') {
                         alert(
@@ -254,33 +225,7 @@ export default function Footer() {
               </ul>
             </div>
 
-            {/* Boutique Contact Details Column */}
-            <div style={{ minWidth: '220px', flex: '1 1 200px' }}>
-              <h4 style={{ 
-                color: 'var(--highlight-gold)', 
-                fontSize: '12px', 
-                letterSpacing: '0.2em', 
-                textTransform: 'uppercase',
-                marginBottom: '20px',
-                fontFamily: 'var(--font-body)',
-                fontWeight: '600'
-              }}>
-                Boutique
-              </h4>
-              <div style={{ 
-                display: 'flex', 
-                flexDirection: 'column', 
-                gap: '12px', 
-                color: 'rgba(248, 245, 240, 0.7)', 
-                fontFamily: 'var(--font-body)', 
-                fontSize: '13px', 
-                lineHeight: '1.6' 
-              }}>
-                <p style={{ margin: 0 }}>Shop no. UG/5, Jagat Plaza, Mouze Pandharabodi, Law College Square, Amravati Rd, Nagpur, Maharashtra 440033</p>
-                <p style={{ margin: 0 }}>Email: <a href="mailto:hello@miraya.com" style={{ color: 'inherit', textDecoration: 'none', transition: 'var(--transition-fast)' }} onMouseEnter={(e) => e.target.style.color = 'var(--bg-warm-ivory)'} onMouseLeave={(e) => e.target.style.color = 'rgba(248, 245, 240, 0.7)'}>hello@miraya.com</a></p>
-                <p style={{ margin: 0 }}>Phone: +91 98765 43210</p>
-              </div>
-            </div>
+
           </div>
 
         </div>

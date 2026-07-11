@@ -281,7 +281,7 @@ function CollectionsRouteWrapper({ products, activeCategory, onSelectCategory, o
     const matched = collectionsList.find(c => {
       const valClean = c.value.replace(/[- ]/g, '').toLowerCase();
       const nameClean = c.name.replace(/[- ]/g, '').toLowerCase();
-      return valClean === decoded || nameClean === decoded;
+      return valClean === decoded || nameClean === decoded || valClean + 's' === decoded || nameClean + 's' === decoded;
     });
     if (matched) {
       setActiveCategory(matched.value);
@@ -290,10 +290,23 @@ function CollectionsRouteWrapper({ products, activeCategory, onSelectCategory, o
     }
   }, [categorySlug, setActiveCategory]);
 
+  const collectionSlug = categorySlug || '';
+  const normalize = (str) => {
+    if (!str) return '';
+    return str.toLowerCase().replace(/[- ]/g, '').replace(/s$/, '');
+  };
+
+  const filteredProducts = products.filter((item) => {
+    const normSlug = normalize(collectionSlug);
+    const normCategory = normalize(item.category);
+    const normCollection = normalize(item.collection);
+    return normCategory === normSlug || normCollection === normSlug;
+  });
+
   return (
     <ScrollReveal>
       <Collection 
-        products={products}
+        products={filteredProducts}
         activeCategory={activeCategory}
         onSelectCategory={onSelectCategory}
         onProductClick={onProductClick}

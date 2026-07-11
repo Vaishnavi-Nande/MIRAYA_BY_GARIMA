@@ -28,7 +28,11 @@ export default function Showcase({ products }) {
 
   return (
     <section className="showcase-section" style={{ backgroundColor: 'var(--bg-warm-ivory)', width: '100%' }}>
-      {categories.map((cat, index) => {
+      <div className="py-20 md:py-28 px-6 max-w-7xl mx-auto">
+        <h2 className="text-2xl md:text-3xl font-light tracking-[0.2em] text-center uppercase text-stone-800 my-12">
+          Our Collections
+        </h2>
+        {categories.map((cat, index) => {
         const isEven = index % 2 === 1;
         const imageUrl = getCategoryImageUrl(cat.value);
         const romanIndex = romanNumerals[index];
@@ -129,6 +133,7 @@ export default function Showcase({ products }) {
           </ScrollReveal>
         );
       })}
+      </div>
     </section>
   );
 }

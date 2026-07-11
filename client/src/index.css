@@ -1483,5 +1483,321 @@ h1, h2, h3, h4, h5, h6 {
   }
 }
 
+/* Product Card Hover Zoom Support Utilities */
+.rounded-2xl {
+  border-radius: 1rem !important;
+}
+.hover\:scale-\[1\.04\]:hover {
+  transform: scale(1.04) !important;
+}
+
+/* Hero Typography Support Utilities */
+.text-stone-900 {
+  color: #1c1917 !important;
+}
+.tracking-\[0\.18em\] {
+  letter-spacing: 0.18em !important;
+}
+.tracking-\[0\.3em\] {
+  letter-spacing: 0.3em !important;
+}
+@media (min-width: 769px) {
+  .md\:text-6xl {
+    font-size: 3.75rem !important;
+  }
+}
+@media (min-width: 1025px) {
+  .lg\:text-7xl {
+    font-size: 4.5rem !important;
+  }
+}
+
+.text-stone-200 {
+  color: #e7e5e4 !important;
+}
+
+/* Homepage Grid Scroll Reveal Animation Utilities */
+.opacity-0 {
+  opacity: 0 !important;
+}
+.translate-y-4 {
+  transform: translateY(1rem) !important;
+}
+.animate-\[fadeInUp_0\.8s_ease-out_forwards\] {
+  animation: fadeInUp 0.8s ease-out forwards !important;
+}
+
+/* Collection Title Support Utilities */
+.my-12 {
+  margin-top: 3rem !important;
+  margin-bottom: 3rem !important;
+}
+.text-center {
+  text-align: center !important;
+}
+.text-2xl {
+  font-size: 1.5rem !important;
+  line-height: 2rem !important;
+}
+@media (min-width: 769px) {
+  .md\:text-3xl {
+    font-size: 1.875rem !important;
+    line-height: 2.25rem !important;
+  }
+}
+
+/* Footer Refinement Support Utilities */
+.tracking-\[0\.25em\] {
+  letter-spacing: 0.25em !important;
+}
+.text-stone-300 {
+  color: #d6d3d1 !important;
+}
+.mb-6 {
+  margin-bottom: 1.5rem !important;
+}
+.hover\:text-amber-600:hover {
+  color: #d97706 !important;
+}
+.my-3 {
+  margin-top: 0.75rem !important;
+  margin-bottom: 0.75rem !important;
+}
+
+/* Brand Story Typography Support Utilities */
+.text-stone-600 {
+  color: #57534e !important;
+}
+.max-w-3xl {
+  max-width: 48rem !important;
+}
+.my-8 {
+  margin-top: 2rem !important;
+  margin-bottom: 2rem !important;
+}
+@media (min-width: 769px) {
+  .md\:text-base {
+    font-size: 1rem !important;
+  }
+  .md\:leading-loose {
+    line-height: 2 !important;
+  }
+}
+
+/* Navbar Mock Auth Support Utilities */
+.hover\:text-stone-900:hover {
+  color: #1c1917 !important;
+}
+.mr-4 {
+  margin-right: 1rem !important;
+}
+.w-7 {
+  width: 1.75rem !important;
+}
+.h-7 {
+  height: 1.75rem !important;
+}
+.bg-stone-100 {
+  background-color: #f5f5f4 !important;
+}
+.border-stone-200 {
+  border-color: #e7e5e4 !important;
+}
+.text-\[10px\] {
+  font-size: 10px !important;
+}
+.text-stone-700 {
+  color: #44403c !important;
+}
+.tracking-tighter {
+  letter-spacing: -0.05em !important;
+}
+
+/* Centered Auth Modal Support Utilities */
+.inset-0 {
+  top: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  left: 0 !important;
+}
+.z-\[9999\] {
+  z-index: 9999 !important;
+}
+.bg-black\/40 {
+  background-color: rgba(0, 0, 0, 0.4) !important;
+}
+.backdrop-blur-sm {
+  backdrop-filter: blur(4px) !important;
+  -webkit-backdrop-filter: blur(4px) !important;
+}
+.bg-white\/95 {
+  background-color: rgba(255, 255, 255, 0.95) !important;
+}
+.p-8 {
+  padding: 2rem !important;
+}
+.shadow-xl {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !important;
+}
+.max-w-md {
+  max-width: 28rem !important;
+}
+.mx-4 {
+  margin-left: 1rem !important;
+  margin-right: 1rem !important;
+}
+.top-4 {
+  top: 1rem !important;
+}
+.right-4 {
+  right: 1rem !important;
+}
+.hover\:text-stone-700:hover {
+  color: #44403c !important;
+}
+
+/* Force Center Auth Modal Support Utilities */
+.top-\[20\%\] {
+  top: 20% !important;
+}
+.left-1\/2 {
+  left: 50% !important;
+}
+.-translate-x-1\/2 {
+  transform: translateX(-50%) !important;
+}
+.z-\[99999\] {
+  z-index: 99999 !important;
+}
+.w-\[90\%\] {
+  width: 90% !important;
+}
+.shadow-2xl {
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !important;
+}
+
+/* About Editorial Layout Support Utilities */
+.max-w-4xl {
+  max-width: 56rem !important;
+}
+@media (min-width: 769px) {
+  .md\:text-lg {
+    font-size: 1.125rem !important;
+    line-height: 1.75rem !important;
+  }
+}
+
+/* About Section Refinements Support Utilities */
+.pt-12 {
+  padding-top: 3rem !important;
+}
+.pb-6 {
+  padding-bottom: 1.5rem !important;
+}
+.max-w-2xl {
+  max-width: 42rem !important;
+}
+.bottom-6 {
+  bottom: 1.5rem !important;
+}
+.left-6 {
+  left: 1.5rem !important;
+}
+@media (min-width: 769px) {
+  .md\:bottom-10 {
+    bottom: 2.5rem !important;
+  }
+  .md\:left-10 {
+    left: 2.5rem !important;
+  }
+}
+
+/* About Split Layout Refinements Support Utilities */
+.max-w-6xl {
+  max-width: 72rem !important;
+}
+.gap-8 {
+  gap: 2rem !important;
+}
+.pt-16 {
+  padding-top: 4rem !important;
+}
+.pb-12 {
+  padding-bottom: 3rem !important;
+}
+.border-r {
+  border-right: 1px solid var(--gold-border) !important;
+}
+.pr-6 {
+  padding-right: 1.5rem !important;
+}
+.font-serif {
+  font-family: var(--font-heading) !important;
+}
+.pl-2 {
+  padding-left: 0.5rem !important;
+}
+@media (min-width: 769px) {
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  }
+  .md\:col-span-1 {
+    grid-column: span 1 / span 1 !important;
+  }
+  .md\:col-span-2 {
+    grid-column: span 2 / span 2 !important;
+  }
+}
+
+/* Contact Page Watermark Support Utilities */
+.bg-stone-50\/50 {
+  background-color: rgba(250, 250, 249, 0.5) !important;
+}
+.z-0 {
+  z-index: 0 !important;
+}
+.z-10 {
+  z-index: 10 !important;
+}
+.text-7xl {
+  font-size: 4.5rem !important;
+  line-height: 1 !important;
+}
+.text-stone-200\/40 {
+  color: rgba(231, 230, 228, 0.4) !important;
+}
+@media (min-width: 769px) {
+  .md\:text-9xl {
+    font-size: 8rem !important;
+    line-height: 1 !important;
+  }
+}
+
+/* Contact Page Watermark Opacity Adjustment Support Utilities */
+.text-8xl {
+  font-size: 6rem !important;
+  line-height: 1 !important;
+}
+.text-stone-300\/70 {
+  color: rgba(214, 211, 209, 0.7) !important;
+}
+@media (min-width: 769px) {
+  .md\:text-\[12rem\] {
+    font-size: 12rem !important;
+    line-height: 1 !important;
+  }
+}
+
+/* Footer Balance Support Utilities */
+.mt-12 {
+  margin-top: 3rem !important;
+}
+.max-w-sm {
+  max-width: 24rem !important;
+}
+.space-y-2 > * + * {
+  margin-top: 0.5rem !important;
+}
+
 
 
