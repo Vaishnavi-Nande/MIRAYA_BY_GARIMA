@@ -37,20 +37,25 @@ export default function Footer() {
   };
 
   return (
-    <footer id="footer-brand" className="brand-footer" style={{ 
+    <footer id="footer-brand" style={{ 
+      paddingTop: '5rem',
       backgroundColor: 'var(--accent-burgundy)', 
       color: 'var(--bg-warm-ivory)',
-      padding: '80px 40px 40px 40px',
+      paddingLeft: '40px',
+      paddingRight: '40px',
       borderTop: '1px solid var(--gold-border-solid)'
-    }}>
+    }} className="brand-footer pt-20 pb-8">
       <div className="container-fluid">
-        <div style={{ 
-          display: 'flex', 
-          flexWrap: 'wrap', 
-          justifyContent: 'space-between', 
-          gap: '48px',
-          marginBottom: '60px'
-        }}>
+        <div 
+          className="mt-16"
+          style={{ 
+            display: 'flex', 
+            flexWrap: 'wrap', 
+            justifyContent: 'space-between', 
+            gap: '48px',
+            marginBottom: '60px'
+          }}
+        >
           
           {/* Brand Info & Newsletter */}
           <div style={{ flex: '1 1 400px', minWidth: '280px' }}>
@@ -141,7 +146,7 @@ export default function Footer() {
             </form>
 
             {/* Boutique Contact Details */}
-            <div className="mt-12 text-left max-w-sm">
+            <div style={{ marginTop: '2.5rem' }} className="text-left max-w-sm">
               <h4 className="text-xs font-medium tracking-[0.25em] text-stone-300 uppercase mb-4" style={{ fontFamily: 'var(--font-body)' }}>
                 Boutique
               </h4>
@@ -160,10 +165,10 @@ export default function Footer() {
               <h4 className="text-xs font-medium tracking-[0.25em] text-stone-300 uppercase mb-6" style={{ fontFamily: 'var(--font-body)' }}>
                 Collections
               </h4>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {['Lehengas', 'Sarees', 'Anarkalis', 'Shararas', 'Gowns', 'Kurtis'].map((item) => (
                   <li key={item}>
-                    <a href="#collection-grid" className="text-xs font-light tracking-widest text-stone-400 hover:text-amber-600 transition-colors duration-300 block my-3" style={{ 
+                    <a href="#collection-grid" className="text-xs font-light tracking-widest text-stone-400 hover:text-amber-600 transition-colors duration-300 block my-2" style={{ 
                       textDecoration: 'none',
                       fontFamily: 'var(--font-body)'
                     }}>
@@ -179,10 +184,10 @@ export default function Footer() {
               <h4 className="text-xs font-medium tracking-[0.25em] text-stone-300 uppercase mb-6" style={{ fontFamily: 'var(--font-body)' }}>
                 The Maison
               </h4>
-              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {['Our Story', 'Artisanal Legacy', 'Exhibitions', 'Press', 'Private Dressing', 'Careers'].map((item) => (
                   <li key={item}>
-                    <a href="#brand-pillars" className="text-xs font-light tracking-widest text-stone-400 hover:text-amber-600 transition-colors duration-300 block my-3" style={{ 
+                    <a href="#brand-pillars" className="text-xs font-light tracking-widest text-stone-400 hover:text-amber-600 transition-colors duration-300 block my-2" style={{ 
                       textDecoration: 'none',
                       fontFamily: 'var(--font-body)'
                     }}>
@@ -198,10 +203,10 @@ export default function Footer() {
               <h4 className="text-xs font-medium tracking-[0.25em] text-stone-300 uppercase mb-6" style={{ fontFamily: 'var(--font-body)' }}>
                 Services
               </h4>
-               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+               <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '8px' }}>
                 {['Contact Boutique', 'Sizing Consultation', 'Shipping & Customs', 'Returns & Exchanges', 'Care & Restorations'].map((item) => (
                   <li key={item}>
-                    <span className="text-xs font-light tracking-widest text-stone-400 hover:text-amber-600 transition-colors duration-300 block my-3" style={{ 
+                    <span className="text-xs font-light tracking-widest text-stone-400 hover:text-amber-600 transition-colors duration-300 block my-2" style={{ 
                       fontFamily: 'var(--font-body)',
                       cursor: 'pointer'
                     }}

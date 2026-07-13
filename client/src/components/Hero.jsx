@@ -31,7 +31,7 @@ export default function Hero({ onExploreClick }) {
         </h1>
 
         {/* Paragraph Body Block */}
-        <p className="max-w-3xl mx-auto text-center text-sm md:text-base font-light tracking-wide text-stone-600 leading-relaxed md:leading-loose my-8" style={{ fontFamily: 'var(--font-body)' }}>
+        <p style={{ color: '#ffffff' }} className="text-left text-xs md:text-sm font-light tracking-widest max-w-xl leading-relaxed mt-4 mb-6 ml-0 block p-0">
           Meaningful ethnic wear, designed to celebrate you. We weave traditional Indian craftsmanship into refined silhouettes for the modern wardrobe.
         </p>
 

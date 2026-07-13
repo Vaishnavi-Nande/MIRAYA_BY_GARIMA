@@ -17,21 +17,20 @@ export default function Collection({ products, activeCategory, onSelectCategory,
     <section id="masterpieces" className="border-grid-bottom" style={{ backgroundColor: 'var(--bg-white)', paddingTop: 'var(--navbar-height)' }}>
       {/* Category Navigation Bar */}
       <div 
-        className="border-grid-bottom category-scroll-container flex flex-wrap items-center justify-center gap-x-4 gap-y-3 w-full max-w-7xl mx-auto px-6 py-6 mb-8" 
-        style={{ 
-          backgroundColor: 'var(--bg-warm-ivory)'
-        }}
+        className="flex flex-row items-center justify-start md:justify-center gap-3 overflow-x-auto whitespace-nowrap pb-4 w-full bg-transparent scrollbar-none snap-x px-6" 
       >
         {categories.map((cat) => (
           <button
             key={cat.label}
-            className={`category-tab flex-shrink-0 ${activeCategory === cat.value ? 'active' : ''}`}
+            className={`category-tab flex-shrink-0 px-6 py-2 text-xs tracking-widest transition-colors duration-300 ${activeCategory === cat.value ? 'active' : ''}`}
             onClick={() => onSelectCategory(cat.value)}
           >
             {cat.label}
           </button>
         ))}
       </div>
+
+      <div className="h-16 w-full clear-both block pointer-events-none" aria-hidden="true" />
 
       {/* Grid of Product Cards Wrapper */}
       <div className="py-12 md:py-20 px-6 max-w-7xl mx-auto">
