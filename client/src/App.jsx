@@ -50,9 +50,9 @@ export default function App() {
         const mockFallback = [
           {
             id: "mir-lh-01",
-            name: "Zardozi Embroidered Raw Silk Lehenga",
+            name: "Zardozi Embroidered Raw Silk Lehenga (Crimson)",
             category: "Lehenga",
-            tags: ["Weddings", "Engagements", "Receptions"],
+            tags: ["Weddings", "Engagements"],
             price: 28500,
             description: "Crafted in premium crimson raw silk, this bridal lehenga is adorned with meticulous hand-embroidered zardozi and dabka work.",
             image: "/images/products/lehenga_crimson.png",
@@ -63,19 +63,85 @@ export default function App() {
             id: "mir-sr-02",
             name: "Kanjeevaram Silk Saree in Royale Burgundy",
             category: "Saree",
-            tags: ["Weddings", "Festivals", "Parties"],
+            tags: ["Weddings", "Festivals"],
             price: 24000,
             description: "A masterwork of heritage weaving, this Kanjeevaram features a deep burgundy body highlighted by pure gold zari borders.",
             image: "/images/products/saree_burgundy.png",
             sizes: ["Free Size"],
             details: ["Fabric: Mulberry Silk", "Zari: Gold threadwork"]
+          },
+          {
+            id: "mir-ak-01",
+            name: "Ivory Floral Anarkali Set",
+            category: "Anarkali Suit",
+            tags: ["Festivals", "Parties"],
+            price: 16500,
+            description: "An elegant ivory silk Anarkali suit with hand-painted floral borders and fine dabka embroidery.",
+            image: "/images/products/anarkali_ivory.png",
+            sizes: ["S", "M", "L"],
+            details: ["Fabric: Silk Georgette", "Dabka embroidery"]
+          },
+          {
+            id: "mir-sh-01",
+            name: "Mint Green Georgette Sharara Set",
+            category: "Sharara Suit",
+            tags: ["Festivals", "Parties"],
+            price: 13800,
+            description: "Mint green flared sharara pants paired with an embellished short kurtis and fine sequined border.",
+            image: "/images/products/sharara_mint.png",
+            sizes: ["S", "M", "L"],
+            details: ["Fabric: Georgette", "Sequin borders"]
+          },
+          {
+            id: "mir-iw-05",
+            name: "Asymmetrical Draped Gown (Burgundy)",
+            category: "Indo-Western Gown",
+            tags: ["Reception", "Cocktail Party"],
+            price: 22500,
+            description: "A contemporary silhouette featuring a hand-draped satin bodice with burgundy sequin embroidery.",
+            image: "/images/products/gown_burgundy.png",
+            sizes: ["XS", "S", "M", "L"],
+            details: ["Fabric: Satin Crepe", "Sequin work"]
+          },
+          {
+            id: "mir-kt-06",
+            name: "Champagne Gold Banarasi Silk Kurti",
+            category: "Kurti",
+            tags: ["Festive", "Casual"],
+            price: 7500,
+            description: "A versatile straight kurta woven with classic Banarasi gold zari bootis.",
+            image: "/images/products/kurti_gold.png",
+            sizes: ["S", "M", "L", "XL"],
+            details: ["Fabric: Banarasi Chanderi Silk", "Zari bootis"]
+          },
+          {
+            id: "mir-ss-07",
+            name: "Peach Chanderi Salwar Suit",
+            category: "Salwar Suit",
+            tags: ["Daily Wear", "Festive"],
+            price: 9800,
+            description: "Lightweight peach salwar suit with hand block prints and fine kantha stitch detailing.",
+            image: "/images/products/salwar_peach.png",
+            sizes: ["S", "M", "L", "XL"],
+            details: ["Fabric: Chanderi Silk Cotton", "Kantha stitch"]
+          },
+          {
+            id: "mir-cs-08",
+            name: "Emerald Modern Ethnic Co-ord Set",
+            category: "Co-ord Set",
+            tags: ["Travel", "Smart Casual"],
+            price: 8900,
+            description: "Relaxed-fit high-low silk tunic with cuff embroidery, paired with tailored straight-leg trousers.",
+            image: "/images/products/coord_emerald.png",
+            sizes: ["XS", "S", "M", "L"],
+            details: ["Fabric: Satin Silk", "Gold embroidery"]
           }
         ];
         setProducts(mockFallback);
       }
     };
     fetchProducts();
-  }, [activeCategory]);
+  }, []);
 
 
 
@@ -93,6 +159,10 @@ export default function App() {
     } else {
       navigate('/collections');
     }
+  };
+
+  const handleHomeSelectCategory = (category) => {
+    setActiveCategory(category);
   };
 
   const handleProductClick = (product) => {
@@ -154,7 +224,10 @@ export default function App() {
       <Routes>
         <Route path="/" element={
           <>
-            <Hero onExploreClick={() => navigate('/collections')} />
+            <Hero onExploreClick={() => {
+              const grid = document.getElementById('explore-collections');
+              if (grid) grid.scrollIntoView({ behavior: 'smooth' });
+            }} />
             <ScrollReveal>
               <About />
             </ScrollReveal>
@@ -266,6 +339,15 @@ function AllCollectionsRouteWrapper({ setActiveCategory, products, activeCategor
 function CollectionsRouteWrapper({ products, activeCategory, onSelectCategory, onProductClick, setActiveCategory }) {
   const { categorySlug } = useParams();
 
+  const normalize = (str) => {
+    if (!str) return '';
+    return str
+      .toLowerCase()
+      .replace(/[- ]/g, '')
+      .replace(/suits?$/, '')
+      .replace(/s$/, '');
+  };
+
   useEffect(() => {
     const collectionsList = [
       { name: 'Lehenga', value: 'Lehenga' },
@@ -277,11 +359,9 @@ function CollectionsRouteWrapper({ products, activeCategory, onSelectCategory, o
       { name: 'Salwar Suit', value: 'Salwar Suit' },
       { name: 'Co-ord Set', value: 'Co-ord Set' }
     ];
-    const decoded = decodeURIComponent(categorySlug).replace(/[- ]/g, '').toLowerCase();
+    const normDecoded = normalize(decodeURIComponent(categorySlug || ''));
     const matched = collectionsList.find(c => {
-      const valClean = c.value.replace(/[- ]/g, '').toLowerCase();
-      const nameClean = c.name.replace(/[- ]/g, '').toLowerCase();
-      return valClean === decoded || nameClean === decoded || valClean + 's' === decoded || nameClean + 's' === decoded;
+      return normalize(c.value) === normDecoded || normalize(c.name) === normDecoded;
     });
     if (matched) {
       setActiveCategory(matched.value);
@@ -290,14 +370,8 @@ function CollectionsRouteWrapper({ products, activeCategory, onSelectCategory, o
     }
   }, [categorySlug, setActiveCategory]);
 
-  const collectionSlug = categorySlug || '';
-  const normalize = (str) => {
-    if (!str) return '';
-    return str.toLowerCase().replace(/[- ]/g, '').replace(/s$/, '');
-  };
-
   const filteredProducts = products.filter((item) => {
-    const normSlug = normalize(collectionSlug);
+    const normSlug = normalize(categorySlug || '');
     const normCategory = normalize(item.category);
     const normCollection = normalize(item.collection);
     return normCategory === normSlug || normCollection === normSlug;

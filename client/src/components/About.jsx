@@ -2,62 +2,39 @@ import React from 'react';
 
 export default function About() {
   return (
-    <section id="about" className="border-grid-bottom" style={{ backgroundColor: 'var(--bg-warm-ivory)' }}>
-      {/* Premium Asymmetrical Split Layout Brand Story Section */}
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 items-center pt-16 pb-12 px-6">
-        {/* Left Column Header (Span 1) */}
-        <div className="md:col-span-1 border-r border-stone-200 pr-6 text-left">
-          <span className="text-xs tracking-[0.3em] uppercase text-stone-400 block mb-2" style={{ fontFamily: 'var(--font-body)' }}>THE MAISON</span>
-          <h2 className="text-3xl font-serif tracking-wide text-stone-800 uppercase font-light" style={{ margin: 0 }}>OUR STITCH,<br/>YOUR STORY</h2>
-        </div>
-
-        {/* Right Column Paragraph (Span 2) */}
-        <p className="md:col-span-2 text-sm md:text-base font-light tracking-wide text-stone-600 leading-relaxed text-left pl-2" style={{ fontFamily: 'var(--font-body)', margin: 0 }}>
-          Miraya by Garima is a premium ethnic wear brand that celebrates timeless Indian craftsmanship with a refined contemporary perspective. Designed for women across generations, Miraya offers thoughtfully curated festive and occasion wear ranging from ₹5,000 to ₹30,000, blending luxurious fabrics, graceful silhouettes, and sophisticated detailing for every special moment.
+    <div className="w-full bg-[#FAF7F2]">
+      {/* Upper Text Block */}
+      <div className="max-w-7xl mx-auto px-6 md:px-12 pt-16 pb-8 text-left">
+        <h2 className="font-serif text-3xl md:text-4xl text-[#4A1D24] tracking-widest uppercase mb-6 leading-tight">
+          OUR STITCH,<br />YOUR STORY
+        </h2>
+        <p className="text-gray-700 font-sans text-sm md:text-base leading-relaxed max-w-5xl">
+          Miraya by Garima is a premium ethnic wear brand that celebrates timeless Indian craftsmanship with a refined contemporary perspective. 
+          Designed for women across generations, Miraya offers thoughtfully curated festive and occasion wear ranging from <span className="font-semibold text-[#8C764D]">₹5,000 to ₹30,000</span>, blending luxurious fabrics, graceful silhouettes, and sophisticated detailing for every special moment.
         </p>
       </div>
 
-      {/* Inner panel with macro textile embroidery detail shot */}
-      <div className="border-grid-top about-textile-container" style={{ padding: '80px 40px' }}>
-        <div 
-          className="editorial-image-container about-textile-frame" 
-          style={{ 
-            height: '450px', 
-            border: '1px solid var(--gold-border)', 
-            position: 'relative' 
-          }}
-        >
-          <img 
-            src="/images/textile_detail.png" 
-            alt="Hand-embroidered zardozi gold details on raw silk" 
-            className="editorial-image-frame"
-          />
-          <div style={{
-            position: 'absolute',
-            top: '0',
-            left: '0',
-            width: '100%',
-            height: '100%',
-            backgroundColor: 'rgba(94, 10, 11, 0.1)',
-            pointerEvents: 'none'
-          }}></div>
-          <div 
-            className="absolute bottom-6 left-6 md:bottom-10 md:left-10"
-            style={{
-              position: 'absolute',
-              color: 'var(--bg-warm-ivory)',
-              zIndex: 10
-            }}
-          >
-            <h3 style={{ color: 'var(--bg-warm-ivory)', fontSize: '24px', marginBottom: '8px', letterSpacing: '0.1em' }}>
-              The Art of Zardozi
-            </h3>
-            <p style={{ fontFamily: 'var(--font-body)', fontSize: '12px', letterSpacing: '0.2em', textTransform: 'uppercase' }}>
-              Intricate detailing & meticulous metallic threadwork
-            </p>
-          </div>
+      {/* Lower Image Banner — Hardlocked Vertical Constraints */}
+      <div 
+        className="w-full relative overflow-hidden mt-4" 
+        style={{ height: '350px', maxHeight: '350px' }}
+      >
+        <img 
+          src="/images/textile_detail.png" 
+          alt="The Art of Zardozi" 
+          className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-105"
+          style={{ height: '100%', width: '100%', objectPosition: 'center 30%' }}
+        />
+        {/* Bottom Left Overlay Text */}
+        <div className="absolute bottom-6 left-6 md:left-12 text-left z-10">
+          <h3 className="font-serif text-white text-xl md:text-2xl tracking-wide mb-1 drop-shadow-sm">
+            The Art of Zardozi
+          </h3>
+          <p className="text-[#D4B26F] text-[10px] md:text-xs tracking-[0.2em] font-sans uppercase drop-shadow-sm">
+            INTRICATE DETAILING & METICULOUS METALLIC THREADWORK
+          </p>
         </div>
       </div>
-    </section>
+    </div>
   );
 }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import AuthModal from './AuthModal';
 
 export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -312,139 +313,11 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
       </div>
 
       {/* Mock Authentication Modal */}
-      {showAuthModal && (
-        <div 
-          className="fixed top-[20%] left-1/2 -translate-x-1/2 z-[99999] w-[90%] max-w-md bg-white p-8 rounded-2xl shadow-2xl border border-stone-200"
-          style={{ transform: 'translateX(-50%)' }}
-        >
-          {/* Close Button */}
-          <button 
-            onClick={() => setShowAuthModal(false)} 
-            className="absolute top-4 right-4 text-stone-400 hover:text-stone-700 text-sm font-light tracking-widest"
-            style={{ border: 'none', background: 'transparent', cursor: 'pointer' }}
-          >
-            CLOSE
-          </button>
-
-          {/* Header */}
-          <div style={{ textAlign: 'center' }}>
-            <span style={{ 
-              fontSize: '10px', 
-              fontWeight: '300', 
-              letterSpacing: '0.25em', 
-              color: 'var(--highlight-gold)', 
-              textTransform: 'uppercase',
-              display: 'block',
-              marginBottom: '8px'
-            }}>
-              Miraya Atelier
-            </span>
-            <h2 style={{
-              fontFamily: 'var(--font-heading)',
-              fontSize: '28px',
-              fontWeight: '300',
-              color: 'var(--accent-burgundy)',
-              textTransform: 'uppercase',
-              letterSpacing: '0.1em',
-              margin: 0
-            }}>
-              Welcome Back
-            </h2>
-          </div>
-
-          {/* Simulated Auth Form */}
-          <form onSubmit={(e) => {
-            e.preventDefault();
-            setIsLoggedIn(true);
-            setShowAuthModal(false);
-          }}
-          style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}
-          >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <label style={{
-                fontSize: '10px',
-                fontWeight: '500',
-                letterSpacing: '0.15em',
-                color: 'var(--accent-burgundy)',
-                textTransform: 'uppercase'
-              }}>
-                Email Address
-              </label>
-              <input 
-                type="email" 
-                placeholder="name@example.com" 
-                required
-                defaultValue="garima@miraya.com"
-                style={{
-                  backgroundColor: 'transparent',
-                  border: '1px solid var(--gold-border)',
-                  borderRadius: '8px',
-                  padding: '12px 16px',
-                  fontSize: '13px',
-                  color: 'var(--accent-burgundy)',
-                  fontFamily: 'var(--font-body)',
-                  outline: 'none'
-                }}
-              />
-            </div>
-
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
-              <label style={{
-                fontSize: '10px',
-                fontWeight: '500',
-                letterSpacing: '0.15em',
-                color: 'var(--accent-burgundy)',
-                textTransform: 'uppercase'
-              }}>
-                Password
-              </label>
-              <input 
-                type="password" 
-                placeholder="••••••••" 
-                required
-                defaultValue="premium123"
-                style={{
-                  backgroundColor: 'transparent',
-                  border: '1px solid var(--gold-border)',
-                  borderRadius: '8px',
-                  padding: '12px 16px',
-                  fontSize: '13px',
-                  color: 'var(--accent-burgundy)',
-                  fontFamily: 'var(--font-body)',
-                  outline: 'none'
-                }}
-              />
-            </div>
-
-            <button 
-              type="submit" 
-              style={{
-                backgroundColor: 'var(--accent-burgundy)',
-                border: 'none',
-                borderRadius: '30px',
-                color: 'var(--bg-warm-ivory)',
-                fontFamily: 'var(--font-body)',
-                fontSize: '12px',
-                letterSpacing: '0.2em',
-                padding: '14px 20px',
-                cursor: 'pointer',
-                fontWeight: '600',
-                textTransform: 'uppercase',
-                marginTop: '10px',
-                transition: 'background-color 0.3s ease'
-              }}
-              onMouseEnter={(e) => e.target.style.backgroundColor = '#4c0d16'}
-              onMouseLeave={(e) => e.target.style.backgroundColor = 'var(--accent-burgundy)'}
-            >
-              Sign In
-            </button>
-          </form>
-
-          <div style={{ textAlign: 'center', fontSize: '11px', color: '#78716c', letterSpacing: '0.05em' }}>
-            Simulating Guest Profile 'MG' (Garima)
-          </div>
-        </div>
-      )}
+      <AuthModal 
+        isOpen={showAuthModal} 
+        onClose={() => setShowAuthModal(false)} 
+        onSuccess={() => setIsLoggedIn(true)} 
+      />
 
     </div>
     </div>

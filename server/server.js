@@ -15,7 +15,11 @@ app.get('/api/products', (req, res) => {
   if (category) {
     const normalize = (str) => {
       if (!str) return '';
-      return str.toLowerCase().replace(/[- ]/g, '').replace(/s$/, '');
+      return str
+        .toLowerCase()
+        .replace(/[- ]/g, '')
+        .replace(/suits?$/, '')
+        .replace(/s$/, '');
     };
     const normCategoryQuery = normalize(category);
     const filtered = products.filter(p => {

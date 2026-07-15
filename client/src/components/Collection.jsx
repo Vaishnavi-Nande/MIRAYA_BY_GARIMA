@@ -166,10 +166,17 @@ export default function Collection({ products, activeCategory, onSelectCategory,
       </div>
       
       {products.length === 0 && (
-        <div style={{ padding: '80px', textAlign: 'center' }}>
-          <p style={{ fontFamily: 'var(--font-body)', color: 'var(--text-muted)' }}>
-            No creations found in this collection.
+        <div className="py-24 px-6 text-center max-w-xl mx-auto flex flex-col items-center justify-center">
+          <span className="text-[#D4B26F] text-2xl mb-4 font-serif font-light">◆</span>
+          <p className="font-serif text-lg text-stone-500 font-light leading-relaxed mb-6">
+            We are currently preparing new additions to this curated collection.
           </p>
+          <span 
+            className="text-xs uppercase tracking-widest text-[#4A1D24] border-b border-[#D4B26F] pb-1 cursor-pointer hover:text-stone-700 transition-colors" 
+            onClick={() => onSelectCategory(null)}
+          >
+            View All Masterpieces
+          </span>
         </div>
       )}
     </section>
