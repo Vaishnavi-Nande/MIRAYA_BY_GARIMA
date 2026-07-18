@@ -24,7 +24,7 @@ const GoldDivider = () => (
 
 export default function AboutPage() {
   return (
-    <div style={{ backgroundColor: '#FAF7F2', minHeight: '100vh', display: 'flex', flexDirection: 'column', paddingTop: 'var(--navbar-height)' }}>
+    <div style={{ backgroundColor: '#FAF7F2', minHeight: '100vh', display: 'flex', flexDirection: 'column', paddingTop: 0 }}>
 
       {/* ═══════════════════════════════════════════════════════════════════
           SECTION 1: "Discover Miraya" Hero Banner (Deep Burgundy)
@@ -33,7 +33,7 @@ export default function AboutPage() {
         <div style={{ position: 'relative', width: '100%', background: '#4A1D24', overflow: 'hidden', display: 'flex', flexWrap: 'wrap', minHeight: '520px' }}>
           
           {/* Left Text Block */}
-          <div style={{ flex: '0 0 45%', minWidth: '280px', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', zIndex: 10, color: 'white', padding: '80px 8% 80px 10%' }}>
+          <div style={{ flex: '0 0 45%', minWidth: '280px', display: 'flex', flexDirection: 'column', justifyContent: 'center', position: 'relative', zIndex: 10, color: 'white', padding: '160px 8% 80px 10%' }}>
             
             {/* Tagline row */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '24px' }}>

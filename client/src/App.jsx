@@ -34,9 +34,7 @@ export default function App() {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const url = activeCategory 
-          ? `/api/products?category=${encodeURIComponent(activeCategory)}`
-          : '/api/products';
+        const url = '/api/products';
         const res = await fetch(url);
         if (res.ok) {
           const data = await res.json();
@@ -373,8 +371,8 @@ function CollectionsRouteWrapper({ products, activeCategory, onSelectCategory, o
   const filteredProducts = products.filter((item) => {
     const normSlug = normalize(categorySlug || '');
     const normCategory = normalize(item.category);
-    const normCollection = normalize(item.collection);
-    return normCategory === normSlug || normCollection === normSlug;
+    const normCollection = normalize(item.collection || '');
+    return normCategory.includes(normSlug) || normSlug.includes(normCategory) || (normCollection && normCollection.includes(normSlug));
   });
 
   return (

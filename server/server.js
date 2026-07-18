@@ -24,8 +24,8 @@ app.get('/api/products', (req, res) => {
     const normCategoryQuery = normalize(category);
     const filtered = products.filter(p => {
       const normCat = normalize(p.category);
-      const normColl = normalize(p.collection);
-      return normCat === normCategoryQuery || normColl === normCategoryQuery;
+      const normColl = normalize(p.collection || '');
+      return normCat.includes(normCategoryQuery) || normCategoryQuery.includes(normCat) || (normColl && normColl.includes(normCategoryQuery));
     });
     return res.json(filtered);
   }

@@ -15,24 +15,26 @@ export default function About() {
       </div>
 
       {/* Lower Image Banner — Hardlocked Vertical Constraints */}
-      <div 
-        className="w-full relative overflow-hidden mt-4" 
-        style={{ height: '350px', maxHeight: '350px' }}
-      >
-        <img 
-          src="/images/textile_detail.png" 
-          alt="The Art of Zardozi" 
-          className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-105"
-          style={{ height: '100%', width: '100%', objectPosition: 'center 30%' }}
-        />
-        {/* Bottom Left Overlay Text */}
-        <div className="absolute bottom-6 left-6 md:left-12 text-left z-10">
-          <h3 className="font-serif text-white text-xl md:text-2xl tracking-wide mb-1 drop-shadow-sm">
-            The Art of Zardozi
-          </h3>
-          <p className="text-[#D4B26F] text-[10px] md:text-xs tracking-[0.2em] font-sans uppercase drop-shadow-sm">
-            INTRICATE DETAILING & METICULOUS METALLIC THREADWORK
-          </p>
+      <div className="max-w-7xl mx-auto px-6 md:px-12 mt-4">
+        <div 
+          className="w-full relative overflow-hidden rounded-2xl" 
+          style={{ height: '350px', maxHeight: '350px' }}
+        >
+          <img 
+            src="/images/textile_detail.png" 
+            alt="The Art of Zardozi" 
+            className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
+            style={{ height: '100%', width: '100%', objectPosition: 'center 35%' }}
+          />
+          {/* Bottom Left Overlay Text */}
+          <div className="absolute bottom-6 left-6 md:left-12 text-left z-10">
+            <h3 className="font-serif text-white text-xl md:text-2xl tracking-wide mb-1 drop-shadow-sm">
+              The Art of Zardozi
+            </h3>
+            <p className="text-[#D4B26F] text-[10px] md:text-xs tracking-[0.2em] font-sans uppercase drop-shadow-sm">
+              INTRICATE DETAILING & METICULOUS METALLIC THREADWORK
+            </p>
+          </div>
         </div>
       </div>
     </div>

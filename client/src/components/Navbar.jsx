@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import AuthModal from './AuthModal';
 
 export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
@@ -11,6 +11,9 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
   const [showAuthModal, setShowAuthModal] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation();
+  const isHome = location.pathname === '/' || location.pathname === '/about';
+
   const navigateTo = (path) => {
     navigate(path);
   };
@@ -50,20 +53,21 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
   ];
 
   return (
-    <div className="absolute top-0 left-0 right-0 w-full z-50 bg-transparent pt-4 navbar-animate">
+    <div className={isHome ? "absolute top-0 left-0 w-full z-50 bg-transparent border-none shadow-none pt-4 navbar-animate" : "relative w-full z-50 bg-[#FAF7F2] border-b border-stone-200 shadow-sm navbar-animate"}>
       <div className="px-4 md:px-8 max-w-7xl mx-auto">
-        <nav className="relative w-full flex items-center justify-between bg-[#fbfaf7] rounded-full border border-stone-200/50 px-8 py-3 shadow-sm h-16 md:h-20">
+        <nav className="relative w-full flex items-center justify-between bg-transparent border-none shadow-none px-8 py-3 h-20 md:h-24">
         
-        {/* Brand Logo & Name */}
-        <div className="navbar-brand-container" style={{ display: 'flex', alignItems: 'center', gap: '16px', cursor: 'pointer' }} onClick={() => { navigateTo('/'); setIsMobileMenuOpen(false); }}>
+        {/* Brand Logo */}
+        <div className="flex-shrink-0 flex items-center" onClick={() => { navigateTo('/'); setIsMobileMenuOpen(false); }} style={{ cursor: 'pointer' }}>
           <img 
             src="/R.png" 
             alt="Miraya by Garima Logo" 
-            className="navbar-logo"
-            style={{ height: '48px', width: 'auto', padding: '4px' }} 
+            className="navbar-logo h-16 md:h-20 w-auto"
+            style={{ padding: '2px', filter: isHome ? 'brightness(0) invert(1)' : 'none' }} 
             onError={(e) => {
               // fallback to logo R.png if R.png fails
               e.target.src = '/logo R.png';
+              e.target.style.filter = isHome ? 'brightness(0) invert(1)' : 'none';
             }}
           />
         </div>
@@ -74,7 +78,7 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
           <a 
             href="/"
             onClick={(e) => { e.preventDefault(); navigateTo('/'); }}
-            className="luxury-link text-xs tracking-widest font-light text-stone-800 transition-colors duration-300"
+            className={`luxury-link text-xs tracking-widest font-light transition-colors duration-300 ${isHome ? 'text-white' : 'text-stone-800'}`}
             style={{ 
               textDecoration: 'none',
               cursor: 'pointer'
@@ -89,7 +93,7 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
             onMouseLeave={() => setIsDropdownOpen(false)}
           >
             <span 
-              className="luxury-link text-xs tracking-widest font-light text-stone-800 transition-colors duration-300"
+              className={`luxury-link text-xs tracking-widest font-light transition-colors duration-300 ${isHome ? 'text-white' : 'text-stone-800'}`}
               style={{ 
                 cursor: 'pointer',
                 paddingBottom: '20px'
@@ -112,10 +116,10 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
                     }}
                     className="flex flex-col gap-2 group cursor-pointer overflow-hidden rounded-xl"
                   >
-                    <div className="w-full h-28 bg-stone-100 rounded-xl overflow-hidden mb-2">
+                    <div className="w-full h-28 bg-[#FAF7F2] rounded-xl overflow-hidden mb-2">
                       <img 
                         src={col.image} 
-                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" 
+                        className="w-full h-full object-contain bg-[#FAF7F2] transition-transform duration-500 group-hover:scale-105" 
                         alt={col.name} 
                       />
                     </div>
@@ -147,7 +151,7 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
 
           <span 
             onClick={() => navigateTo('/about')}
-            className="luxury-link text-xs tracking-widest font-light text-stone-800 transition-colors duration-300"
+            className={`luxury-link text-xs tracking-widest font-light transition-colors duration-300 ${isHome ? 'text-white' : 'text-stone-800'}`}
             style={{ 
               cursor: 'pointer'
             }}
@@ -158,7 +162,7 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
 
           <span 
             onClick={() => navigateTo('/contact')}
-            className="luxury-link text-xs tracking-widest font-light text-stone-800 transition-colors duration-300"
+            className={`luxury-link text-xs tracking-widest font-light transition-colors duration-300 ${isHome ? 'text-white' : 'text-stone-800'}`}
             style={{ 
               cursor: 'pointer'
             }}
@@ -172,7 +176,7 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
           
           {!isLoggedIn ? (
             <span 
-              className="text-xs font-light tracking-widest text-stone-600 hover:text-stone-900 uppercase cursor-pointer mr-4"
+              className={`text-xs font-light tracking-widest uppercase cursor-pointer mr-4 ${isHome ? 'text-white hover:text-stone-200' : 'text-stone-600 hover:text-stone-900'}`}
               onClick={() => setShowAuthModal(true)}
               style={{ fontFamily: 'var(--font-body)', userSelect: 'none' }}
             >
@@ -191,20 +195,20 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
 
           <div 
             onClick={onCartClick} 
-            className="navbar-bag-btn"
+            className={`navbar-bag-btn ${isHome ? 'text-white' : 'text-stone-800'}`}
             style={{ 
               display: 'flex', 
               alignItems: 'center', 
               gap: '8px', 
               cursor: 'pointer', 
               padding: '6px 12px',
-              border: '1px solid var(--gold-border)',
+              border: isHome ? '1px solid rgba(255, 255, 255, 0.4)' : '1px solid var(--gold-border)',
               transition: 'var(--transition-smooth)'
             }}
-            onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--accent-burgundy)'}
-            onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--gold-border)'}
+            onMouseEnter={(e) => e.currentTarget.style.borderColor = isHome ? '#ffffff' : 'var(--accent-burgundy)'}
+            onMouseLeave={(e) => e.currentTarget.style.borderColor = isHome ? 'rgba(255, 255, 255, 0.4)' : 'var(--gold-border)'}
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent-burgundy)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke={isHome ? 'currentColor' : 'var(--accent-burgundy)'} strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
               <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
               <line x1="3" y1="6" x2="21" y2="6"></line>
               <path d="M16 10a4 4 0 0 1-8 0"></path>
@@ -221,7 +225,7 @@ export default function Navbar({ cartCount, onCartClick, onSelectCategory }) {
           </div>
 
           <button 
-            className="mobile-nav-toggle"
+            className={`mobile-nav-toggle ${isHome ? 'text-white' : ''}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label="Toggle menu"
           >
